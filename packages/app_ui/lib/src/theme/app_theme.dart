@@ -2,6 +2,7 @@
 
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 /// {@template asman_theme}
 /// The Default App [ThemeData].
@@ -17,7 +18,7 @@ class AppTheme {
       canvasColor: _backgroundColor,
       scaffoldBackgroundColor: _backgroundColor,
       // iconTheme: _iconTheme,
-      // appBarTheme: _appBarTheme,
+      appBarTheme: _appBarTheme,
       // dividerTheme: _dividerTheme,
       // textTheme: _textTheme,
       // inputDecorationTheme: _inputDecorationTheme,
@@ -61,25 +62,25 @@ class AppTheme {
 
   Color get _backgroundColor => AppColors.white;
 
-  // AppBarTheme get _appBarTheme {
-  //   return AppBarTheme(
-  //     iconTheme: _iconTheme,
-  //     titleTextStyle: _textTheme.titleLarge,
-  //     elevation: 0,
-  //     toolbarHeight: 64,
-  //     backgroundColor: AppColors.transparent,
-  //     systemOverlayStyle: const SystemUiOverlayStyle(
-  //       statusBarIconBrightness: Brightness.dark,
-  //       statusBarBrightness: Brightness.light,
-  //     ),
-  //   );
-  // }
+  AppBarTheme get _appBarTheme {
+    return AppBarTheme(
+      iconTheme: _iconTheme,
+      titleTextStyle: _textTheme.titleLarge,
+      elevation: 1,
+      toolbarHeight: 64,
+      backgroundColor: Colors.amber,
+      systemOverlayStyle: const SystemUiOverlayStyle(
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light,
+      ),
+    );
+  }
 
-  // IconThemeData get _iconTheme {
-  //   return const IconThemeData(
-  //     color: AppColors.onBackground,
-  //   );
-  // }
+  IconThemeData get _iconTheme {
+    return const IconThemeData(
+        // color: AppColors.onBackground,
+        );
+  }
 
   // DividerThemeData get _dividerTheme {
   //   return const DividerThemeData(
@@ -91,7 +92,7 @@ class AppTheme {
   //   );
   // }
 
-  // TextTheme get _textTheme => uiTextTheme;
+  TextTheme get _textTheme => uiTextTheme;
 
   // /// The Content text theme based on [ContentTextStyle].
   // static final contentTextTheme = TextTheme(
@@ -115,25 +116,26 @@ class AppTheme {
   // );
 
   // /// The UI text theme based on [UITextStyle].
-  // static final uiTextTheme = TextTheme(
-  //   displayLarge: UITextStyle.headline1,
-  //   displayMedium: UITextStyle.headline2,
-  //   displaySmall: UITextStyle.headline3,
-  //   headlineMedium: UITextStyle.headline4,
-  //   headlineSmall: UITextStyle.headline5,
-  //   titleLarge: UITextStyle.headline6,
-  //   titleMedium: UITextStyle.subtitle1,
-  //   titleSmall: UITextStyle.subtitle2,
-  //   bodyLarge: UITextStyle.bodyText1,
-  //   bodyMedium: UITextStyle.bodyText2,
-  //   labelLarge: UITextStyle.button,
-  //   bodySmall: UITextStyle.caption,
-  //   labelSmall: UITextStyle.overline,
-  // ).apply(
-  //   bodyColor: AppColors.black,
-  //   displayColor: AppColors.black,
-  //   decorationColor: AppColors.black,
-  // );
+  static final uiTextTheme = TextTheme(
+          // displayLarge: UITextStyle.headline1,
+          // displayMedium: UITextStyle.headline2,
+          // displaySmall: UITextStyle.headline3,
+          // headlineMedium: UITextStyle.headline4,
+          // headlineSmall: UITextStyle.headline5,
+          // titleLarge: UITextStyle.headline6,
+          // titleMedium: UITextStyle.subtitle1,
+          // titleSmall: UITextStyle.subtitle2,
+          // bodyLarge: UITextStyle.bodyText1,
+          // bodyMedium: UITextStyle.bodyText2,
+          // labelLarge: UITextStyle.button,
+          // bodySmall: UITextStyle.caption,
+          // labelSmall: UITextStyle.overline,
+          )
+      .apply(
+          // bodyColor: AppColors.black,
+          // displayColor: AppColors.black,
+          // decorationColor: AppColors.black,
+          );
 
   // InputDecorationTheme get _inputDecorationTheme {
   //   return InputDecorationTheme(

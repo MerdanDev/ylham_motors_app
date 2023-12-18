@@ -1,3 +1,4 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:ylham_motors_ui/ylham_motors_ui.dart';
 
@@ -18,14 +19,21 @@ class Product extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => onPressed?.call(),
-      child: ProductDescriptionLayout(
-        title: title,
-        imageUrl: imageUrl,
-        description: "block.description",
-        publishedAt: DateTime.now(),
-        author: "block.author",
+    final theme = Theme.of(context);
+
+    return Material(
+      color: theme.colorScheme.tertiaryContainer,
+      elevation: 1,
+      borderRadius: BorderRadius.circular(AppSpacing.md),
+      child: GestureDetector(
+        onTap: () => onPressed?.call(),
+        child: ProductDescriptionLayout(
+          title: title,
+          imageUrl: imageUrl,
+          description: "block.description",
+          publishedAt: DateTime.now(),
+          author: "block.author",
+        ),
       ),
     );
   }

@@ -23,17 +23,35 @@ class ProductFooter extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        // Favorite icon button
-        IconButton.filledTonal(
+        IconButton.outlined(
           onPressed: () => onLike?.call(),
+          style: IconButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(AppSpacing.sm), // <-- Radius
+            ),
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
           icon: const Icon(Icons.favorite_border_rounded),
         ),
 
+        const SizedBox(width: AppSpacing.md),
+
+        // // Favorite icon button
+        // IconButton.filledTonal(
+        //   onPressed: () => onLike?.call(),
+        //   icon: const Icon(Icons.favorite_border_rounded),
+        // ),
+
         // Add to cart icon button
         Expanded(
-          child: ElevatedButton.icon(
+          child: IconButton.filled(
             onPressed: () => onCart?.call(),
-            label: const Text("cart"),
+            style: ElevatedButton.styleFrom(
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppSpacing.sm), // <-- Radius
+              ),
+            ),
             icon: const Icon(Icons.shopping_cart_rounded),
           ),
         ),

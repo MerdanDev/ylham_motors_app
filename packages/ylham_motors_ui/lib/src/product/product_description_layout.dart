@@ -40,22 +40,36 @@ class ProductDescriptionLayout extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Padding(
-      padding: const EdgeInsets.all(AppSpacing.lg),
+      padding: const EdgeInsets.all(AppSpacing.md),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          ProductImage(imageUrl: imageUrl),
+          ProductImage(
+            imageUrl: imageUrl,
+            borderRadius: BorderRadius.circular(AppSpacing.sm),
+          ),
 
           // Content
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Erkekler üçin şorty', style: textTheme.titleSmall),
-              const SizedBox(height: 8.0),
-              Expanded(child: Text('Gapdal we yz tarapyndan jübüli ýumşak şorty', style: textTheme.bodySmall)),
-              const SizedBox(height: 8.0),
-              Text('360,00 m.', style: textTheme.titleMedium),
-            ],
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 8.0),
+                Text('Erkekler üçin şorty', style: textTheme.titleSmall),
+                const SizedBox(height: 8.0),
+                Expanded(
+                  child: Text(
+                    'Gapdal we yz tarapyndan jübüli ýumşak şorty',
+                    style: textTheme.bodySmall,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                const SizedBox(height: 8.0),
+                Text('360,00 m.', style: textTheme.titleMedium),
+              ],
+            ),
           ),
 
           const SizedBox(height: AppSpacing.sm),

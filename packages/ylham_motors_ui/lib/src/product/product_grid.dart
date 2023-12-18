@@ -1,3 +1,4 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:ylham_motors_ui/ylham_motors_ui.dart';
 
@@ -18,13 +19,13 @@ class ProductGrid extends StatelessWidget {
     }
 
     return SliverPadding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(AppSpacing.md),
       sliver: SliverGrid(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          childAspectRatio: 0.46,
-          mainAxisSpacing: 8,
-          crossAxisSpacing: 8,
+          childAspectRatio: 0.51,
+          mainAxisSpacing: AppSpacing.md,
+          crossAxisSpacing: AppSpacing.md,
         ),
         delegate: SliverChildBuilderDelegate(
           (BuildContext context, int index) {
