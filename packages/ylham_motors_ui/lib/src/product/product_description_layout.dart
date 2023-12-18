@@ -52,7 +52,7 @@ class ProductDescriptionLayout extends StatelessWidget {
             children: [
               Text('Erkekler üçin şorty', style: textTheme.titleSmall),
               const SizedBox(height: 8.0),
-              Text('Gapdal we yz tarapyndan jübüli ýumşak şorty', style: textTheme.bodySmall),
+              Expanded(child: Text('Gapdal we yz tarapyndan jübüli ýumşak şorty', style: textTheme.bodySmall)),
               const SizedBox(height: 8.0),
               Text('360,00 m.', style: textTheme.titleMedium),
             ],
