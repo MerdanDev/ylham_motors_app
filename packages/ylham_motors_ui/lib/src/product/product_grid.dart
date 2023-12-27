@@ -29,10 +29,11 @@ class ProductGrid extends StatelessWidget {
         ),
         delegate: SliverChildBuilderDelegate(
           (BuildContext context, int index) {
-            return const Product(
+            return Product(
               imageUrl:
                   "https://plus.unsplash.com/premium_photo-1682308249776-9356bf43b705?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YW5pbWV8ZW58MHx8MHx8fDA%3D",
               title: "block.title",
+              onPressed: onPressed,
             );
           },
           childCount: productsLength,

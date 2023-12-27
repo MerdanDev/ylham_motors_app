@@ -1,5 +1,7 @@
 import 'package:ylham_motors/app/app.dart';
+import 'package:ylham_motors/categories/categories.dart';
 import 'package:ylham_motors/home/home.dart';
+import 'package:ylham_motors/product/product.dart';
 import 'package:ylham_motors/profile/profile.dart';
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
@@ -56,19 +58,30 @@ class AppRouter {
           StatefulShellBranch(
             routes: [
               GoRoute(
+                name: Routes.homeShellRoute,
                 path: '/${Routes.homeShellRoute}',
                 builder: (context, state) {
                   return const HomePage(key: Key('HomePage_key'));
                 },
+                routes: [
+                  GoRoute(
+                    name: Routes.productRoute,
+                    path: Routes.productRoute,
+                    builder: (context, state) {
+                      return const ProductPage(key: Key('ProductPage_key'));
+                    },
+                  ),
+                ],
               ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: '/${Routes.homeShellRoute}',
+                name: Routes.categoriesShellRoute,
+                path: '/${Routes.categoriesShellRoute}',
                 builder: (context, state) {
-                  return const HomePage(key: Key('HomePage_key'));
+                  return const CategoriesPage(key: Key('CategoriesPage_key'));
                 },
               ),
             ],

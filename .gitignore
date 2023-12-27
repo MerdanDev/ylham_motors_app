@@ -1,3 +1,5 @@
+**/*.jks
+
 # Miscellaneous
 *.class
 *.log
