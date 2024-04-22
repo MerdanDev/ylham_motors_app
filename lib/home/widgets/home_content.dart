@@ -1,6 +1,12 @@
+import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ylham_motors/app/app.dart';
+import 'package:ylham_motors/categories/categories.dart';
+import 'package:ylham_motors/home/home.dart';
+import 'package:ylham_motors/masters/masters.dart';
+import 'package:ylham_motors/detailed_product/detailed_product.dart';
+import 'package:ylham_motors/products/products.dart';
 import 'package:ylham_motors_ui/ylham_motors_ui.dart';
 
 class HomeContent extends StatelessWidget {
@@ -8,23 +14,95 @@ class HomeContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appSource = context.select((AppCubit cubit) => cubit.state.appSource);
+    final sliders = context.select((HomeBloc bloc) => bloc.state.sliders);
+    final categories = context.select((HomeBloc bloc) => bloc.state.categories);
+    final categoryProducts = context.select((HomeBloc bloc) => bloc.state.categoryProducts);
+    final isLoading = context.select((HomeBloc bloc) => bloc.state.status == HomeStatus.loading);
+
+    final categoryWidgets = categories.map((category) {
+      final products = categoryProducts[category.id!];
+
+      if (products?.isEmpty ?? true) {
+        return const SliverPadding(padding: EdgeInsets.zero);
+      }
+
+      return SliverToBoxAdapter(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+              child: CategoriesItemCard(category: category),
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.width - (AppSpacing.md * 1.5),
+              child: ListView.separated(
+                padding: const EdgeInsets.all(AppSpacing.md),
+                scrollDirection: Axis.horizontal,
+                itemCount: products!.length,
+                separatorBuilder: (_, __) => const SizedBox(width: AppSpacing.md),
+                itemBuilder: (context, index) {
+                  final product = products[index];
+                  return AspectRatio(
+                    aspectRatio: 0.51,
+                    child: ProductCard(
+                      product: product,
+                      onPressed: () => Navigator.of(context).push(
+                        DetailedProductPage.route(
+                          product: product,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      );
+    });
+
     return CustomScrollView(
       slivers: [
-        const SliverToBoxAdapter(
-          child: BannerAdsSlider(
-            imageUrls: [
-              "https://images.unsplash.com/photo-1590845947670-c009801ffa74?q=80&w=1459&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              "https://plus.unsplash.com/premium_photo-1670934158407-d2009128cb02?q=80&w=1460&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-              "https://images.unsplash.com/photo-1614850715649-1d0106293bd1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            ],
+        if (sliders.isNotEmpty)
+          SliverToBoxAdapter(
+            child: BannerAdsSlider(
+              imageUrls: sliders.map<String?>((e) => e.image).nonNulls,
+            ),
+          )
+        else
+          const SliverToBoxAdapter(
+            child: SizedBox(height: AppSpacing.md),
           ),
-        ),
-        ProductGrid(
-          productsLength: 10,
-          onPressed: () {
-            context.goNamed(Routes.productRoute);
-          },
-        ),
+
+        /// Store products
+        if (appSource == AppSource.store) ...[
+          if (isLoading)
+            const SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  SizedBox(height: AppSpacing.md),
+                  CircularProgressIndicator(),
+                ],
+              ),
+            ),
+
+          /// Category products
+          ...categoryWidgets,
+
+          // ProductGrid(
+          //   productsLength: 10,
+          //   onPressed: () {
+          //     Navigator.of(context).push(DetailedProductPage.route());
+          //   },
+          // ),
+        ],
+
+        /// Masters
+        if (appSource == AppSource.masters) ...[
+          const MastersListView.sliver(),
+        ],
       ],
     );
   }

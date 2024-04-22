@@ -1,6 +1,5 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/material.dart';
 import 'package:ylham_motors_ui/ylham_motors_ui.dart';
 
@@ -12,7 +11,7 @@ class BannerAdsSlider extends StatelessWidget {
     super.key,
   });
 
-  final List<String> imageUrls;
+  final Iterable<String> imageUrls;
 
   @override
   Widget build(BuildContext context) {

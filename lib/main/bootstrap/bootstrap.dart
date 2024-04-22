@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:path_provider/path_provider.dart';
@@ -52,6 +53,11 @@ Future<void> bootstrap(AppBuilder builder) async {
       HydratedBloc.storage = await HydratedStorage.build(
         storageDirectory: await getApplicationSupportDirectory(),
       );
+
+      /// Hive Box
+      await Hive.initFlutter();
+      // final dir = await getApplicationSupportDirectory();
+      // Hive. = dir.path;
 
       // if (kDebugMode) {
       //   await HydratedBloc.storage.clear();

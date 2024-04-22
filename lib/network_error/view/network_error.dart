@@ -1,4 +1,3 @@
-import 'package:ylham_motors/l10n/l10n.dart';
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 
@@ -29,8 +28,8 @@ class NetworkError extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = context.l10n;
-    final theme = Theme.of(context);
+    // final l10n = context.l10n;
+    // final theme = Theme.of(context);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +38,7 @@ class NetworkError extends StatelessWidget {
         Icon(
           Icons.error_outline,
           size: 80,
-          color: AppColors.ceruleanBlue[600],
+          color: AppColors.primary[600],
         ),
         const SizedBox(height: AppSpacing.lg),
         Text(

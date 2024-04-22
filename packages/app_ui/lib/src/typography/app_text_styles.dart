@@ -1,6 +1,7 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// The app consists of two main text style definitions: Display and Text.
 enum AppTextType {
@@ -17,6 +18,7 @@ enum AppTextType {
 /// e.g. news feed including articles and sections, while the UI text style
 /// is used for the rest of UI components.
 ///
+// ignore: comment_references
 /// The default app's [TextTheme] is [AppTheme.uiTextTheme].
 
 /// UI Display Text Style Definitions
@@ -30,37 +32,70 @@ enum AppTextType {
 class AppTextStyle extends TextStyle {
   /// Constructor
   const AppTextStyle({
-    required AppTextType textType,
+    required this.textType,
     super.fontSize,
     super.fontWeight,
-  })  : _textType = textType,
-        super(
+    this.lineHeight,
+    super.color,
+  }) : super(
           package: 'app_ui',
           fontFamily: 'Inter',
           decoration: TextDecoration.none,
           textBaseline: TextBaseline.alphabetic,
+          height: lineHeight == null ? null : lineHeight / (fontSize ?? 14),
+          // leadingDistribution: TextLeadingDistribution.even,
         );
 
   /// Typography default text style
-  const AppTextStyle.text() : this(textType: AppTextType.text);
+  const AppTextStyle.text({
+    Color? color,
+    double? fontSize,
+  }) : this(
+          textType: AppTextType.text,
+          color: color,
+          fontSize: fontSize,
+        );
 
   /// Typography display text style
-  const AppTextStyle.display() : this(textType: AppTextType.display);
+  const AppTextStyle.display({
+    Color? color,
+    double? fontSize,
+  }) : this(
+          textType: AppTextType.display,
+          color: color,
+          fontSize: fontSize,
+        );
 
   /// Is text display styled from typography
-  final AppTextType _textType;
+  final AppTextType textType;
+
+  /// Text line height in pixels
+  final double? lineHeight;
 
   /// Custom copyWith
   AppTextStyle _copyWith({
     double? fontSize,
     FontWeight? fontWeight,
+    double? lineHeight,
+    Color? color,
   }) {
     return AppTextStyle(
-      textType: _textType,
+      textType: textType,
       fontSize: fontSize ?? this.fontSize,
       fontWeight: fontWeight ?? this.fontWeight,
+      lineHeight: lineHeight ?? this.lineHeight,
+      color: color ?? this.color,
     );
   }
+
+  /// Change only color
+  AppTextStyle withColor(Color? color) => _copyWith(color: color);
+
+  /// Change only font size
+  AppTextStyle withFontSize(double? fontSize) => _copyWith(fontSize: fontSize);
+
+  /// Change only line height
+  AppTextStyle withLineHeight(double? lineHeight) => _copyWith(lineHeight: lineHeight);
 }
 
 /// App text style sizes like: extra large, large, medium, small, extra small
@@ -71,8 +106,8 @@ extension AppTextStyleSizeExtension on AppTextStyle {
   ///
   ///  * display - `fontSize`: 72, `lineHeight`: 90
   ///  * text - default
-  AppTextStyle xxl() => switch (_textType) {
-        AppTextType.display => _copyWith(fontSize: 72.sp),
+  AppTextStyle xxl() => switch (textType) {
+        AppTextType.display => _copyWith(fontSize: 72, lineHeight: 90),
         AppTextType.text => this,
       };
 
@@ -80,45 +115,45 @@ extension AppTextStyleSizeExtension on AppTextStyle {
   ///
   ///  * display - `fontSize`: 60, `lineHeight`: 72
   ///  * text - `fontSize`: 20, `lineHeight`: 30
-  AppTextStyle xl() => switch (_textType) {
-        AppTextType.display => _copyWith(fontSize: 60.sp),
-        AppTextType.text => _copyWith(fontSize: 20.sp),
+  AppTextStyle xl() => switch (textType) {
+        AppTextType.display => _copyWith(fontSize: 60, lineHeight: 72),
+        AppTextType.text => _copyWith(fontSize: 20, lineHeight: 30),
       };
 
   /// `Size` - lg (large)
   ///
   ///  * display - `fontSize`: 48, `lineHeight`: 60
   ///  * text - `fontSize`: 18, `lineHeight`: 28
-  AppTextStyle lg() => switch (_textType) {
-        AppTextType.display => _copyWith(fontSize: 48.sp),
-        AppTextType.text => _copyWith(fontSize: 18.sp),
+  AppTextStyle lg() => switch (textType) {
+        AppTextType.display => _copyWith(fontSize: 48, lineHeight: 60),
+        AppTextType.text => _copyWith(fontSize: 18, lineHeight: 28),
       };
 
   /// `Size` - md (middle)
   ///
   ///  * display - `fontSize`: 36, `lineHeight`: 44
   ///  * text - `fontSize`: 16, `lineHeight`: 24
-  AppTextStyle md() => switch (_textType) {
-        AppTextType.display => _copyWith(fontSize: 36.sp),
-        AppTextType.text => _copyWith(fontSize: 16.sp),
+  AppTextStyle md() => switch (textType) {
+        AppTextType.display => _copyWith(fontSize: 36, lineHeight: 44),
+        AppTextType.text => _copyWith(fontSize: 16, lineHeight: 24),
       };
 
   /// `Size` - sm (small)
   ///
   ///  * display - `fontSize`: 30, `lineHeight`: 38
   ///  * text - `fontSize`: 14, `lineHeight`: 20
-  AppTextStyle sm() => switch (_textType) {
-        AppTextType.display => _copyWith(fontSize: 30.sp),
-        AppTextType.text => _copyWith(fontSize: 14.sp),
+  AppTextStyle sm() => switch (textType) {
+        AppTextType.display => _copyWith(fontSize: 30, lineHeight: 38),
+        AppTextType.text => _copyWith(fontSize: 14, lineHeight: 20),
       };
 
   /// `Size` - xs (extra small)
   ///
   ///  * display - `fontSize`: 24, `lineHeight`: 32
   ///  * text - `fontSize`: 12, `lineHeight`: 18
-  AppTextStyle xs() => switch (_textType) {
-        AppTextType.display => _copyWith(fontSize: 24.sp),
-        AppTextType.text => _copyWith(fontSize: 12.sp),
+  AppTextStyle xs() => switch (textType) {
+        AppTextType.display => _copyWith(fontSize: 24, lineHeight: 32),
+        AppTextType.text => _copyWith(fontSize: 12, lineHeight: 18),
       };
 }
 

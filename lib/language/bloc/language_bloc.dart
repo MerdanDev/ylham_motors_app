@@ -1,19 +1,15 @@
 import 'dart:async';
 
-// import 'package:asman_rider/settings/settings.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-// import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 part 'language_event.dart';
 
 const kDefaultLocale = Locale('ru');
 
 class LanguageBloc extends HydratedBloc<LanguageEvent, Locale> {
-  LanguageBloc()
-      : // _settingsRepository = settingsRepository,
-        super(kDefaultLocale) {
+  LanguageBloc() : super(kDefaultLocale) {
     on<LanguageChanged>(_onLanguageChanged);
   }
 

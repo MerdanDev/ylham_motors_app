@@ -61,8 +61,34 @@ const _tkSymbols = {
   'ERANAMES': ['Before Christ', 'Anno Domini'],
   'NARROWMONTHS': ['Ý', 'F', 'M', 'A', 'M', 'I', 'I', 'A', 'S', 'O', 'N', 'D'],
   'STANDALONENARROWMONTHS': ['Ý', 'F', 'M', 'A', 'M', 'I', 'I', 'A', 'S', 'O', 'N', 'D'],
-  'MONTHS': ['Ýanwar', 'Fewral', 'Mart', 'Aprel', 'Maý', 'Iýun', 'Iýul', 'Awgust', 'Sentýabr', 'Oktýabr', 'Noýabr', 'Dekabr'],
-  'STANDALONEMONTHS': ['Ýanwar', 'Fewral', 'Mart', 'Aprel', 'Maý', 'Iýun', 'Iýul', 'Awgust', 'Sentýabr', 'Oktýabr', 'Noýabr', 'Dekabr'],
+  'MONTHS': [
+    'Ýanwar',
+    'Fewral',
+    'Mart',
+    'Aprel',
+    'Maý',
+    'Iýun',
+    'Iýul',
+    'Awgust',
+    'Sentýabr',
+    'Oktýabr',
+    'Noýabr',
+    'Dekabr'
+  ],
+  'STANDALONEMONTHS': [
+    'Ýanwar',
+    'Fewral',
+    'Mart',
+    'Aprel',
+    'Maý',
+    'Iýun',
+    'Iýul',
+    'Awgust',
+    'Sentýabr',
+    'Oktýabr',
+    'Noýabr',
+    'Dekabr'
+  ],
   'SHORTMONTHS': ['Ýan', 'Few', 'Mar', 'Apr', 'Maý', 'Iýu', 'Iýl', 'Awg', 'Sen', 'Okt', 'Noý', 'Dek'],
   'STANDALONESHORTMONTHS': ['Ýan', 'Few', 'Mar', 'Apr', 'Maý', 'Iýu', 'Iýl', 'Awg', 'Sen', 'Okt', 'Noý', 'Dek'],
   'WEEKDAYS': ['Ýekşenbe', 'Duşenbe', 'Sişenbe', 'Çarşenbe', 'Penşenbe', 'Anna', 'Şenbe'],
@@ -346,23 +372,19 @@ class TkCupertinoLocalizations extends GlobalCupertinoLocalizations {
   String get datePickerMinuteSemanticsLabelOther => r'$minute minut';
 
   @override
-  String get noSpellCheckReplacementsLabel => '';
+  String get noSpellCheckReplacementsLabel => const DefaultCupertinoLocalizations().noSpellCheckReplacementsLabel;
 
   @override
-  // TODO: implement lookUpButtonLabel
-  String get lookUpButtonLabel => throw UnimplementedError();
+  String get lookUpButtonLabel => const DefaultCupertinoLocalizations().lookUpButtonLabel;
 
   @override
-  // TODO: implement menuDismissLabel
-  String get menuDismissLabel => throw UnimplementedError();
+  String get menuDismissLabel => const DefaultCupertinoLocalizations().menuDismissLabel;
 
   @override
-  // TODO: implement searchWebButtonLabel
-  String get searchWebButtonLabel => throw UnimplementedError();
+  String get searchWebButtonLabel => const DefaultCupertinoLocalizations().searchWebButtonLabel;
 
   @override
-  // TODO: implement shareButtonLabel
-  String get shareButtonLabel => throw UnimplementedError();
+  String get shareButtonLabel => const DefaultCupertinoLocalizations().shareButtonLabel;
 }
 
 class TkMaterialLocalizations extends GlobalMaterialLocalizations {
@@ -799,18 +821,14 @@ class TkMaterialLocalizations extends GlobalMaterialLocalizations {
   String get scanTextButtonLabel => const DefaultMaterialLocalizations().scanTextButtonLabel;
 
   @override
-  // TODO: implement lookUpButtonLabel
   String get lookUpButtonLabel => const DefaultMaterialLocalizations().lookUpButtonLabel;
 
   @override
-  // TODO: implement menuDismissLabel
   String get menuDismissLabel => const DefaultMaterialLocalizations().menuDismissLabel;
 
   @override
-  // TODO: implement searchWebButtonLabel
   String get searchWebButtonLabel => const DefaultMaterialLocalizations().searchWebButtonLabel;
 
   @override
-  // TODO: implement shareButtonLabel
   String get shareButtonLabel => const DefaultMaterialLocalizations().shareButtonLabel;
 }

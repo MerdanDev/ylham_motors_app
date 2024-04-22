@@ -128,8 +128,8 @@ class AppButton extends StatelessWidget {
           padding: padding,
           iconOnly: true,
           leading: icon,
-          buttonSize: buttonSize,
-          buttonType: buttonType,
+          buttonSize: buttonSize ?? AppButtonSize.medium,
+          buttonType: buttonType ?? AppButtonType.primary,
           key: key,
         );
 
@@ -195,36 +195,36 @@ class AppButton extends StatelessWidget {
   /// Border radius of the button
   final BorderRadius? _borderRadius;
 
-  static final _defaultBorderRadius = BorderRadius.circular(12);
+  static final _defaultBorderRadius = BorderRadius.circular(8);
 
   /// Get normal button padding
   EdgeInsets get padding => switch (_buttonSize) {
-        AppButtonSize.small => const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
+        AppButtonSize.small => const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
         AppButtonSize.medium => const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         AppButtonSize.large => const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
       };
 
   /// Get icon button padding
   EdgeInsets get iconButtonPadding => switch (_buttonSize) {
-        AppButtonSize.small => const EdgeInsets.all(6),
-        AppButtonSize.medium => const EdgeInsets.all(10),
-        AppButtonSize.large => const EdgeInsets.all(18),
+        AppButtonSize.small => const EdgeInsets.all(4),
+        AppButtonSize.medium => const EdgeInsets.all(8),
+        AppButtonSize.large => const EdgeInsets.all(16),
       };
 
   /// Get button color according to the button type
   Color get buttonColor => switch (_buttonType) {
-        AppButtonType.primary => AppColors.ceruleanBlue[600]!,
-        AppButtonType.secondary => AppColors.ceruleanBlue[100]!,
-        AppButtonType.tertiary => AppColors.gray[100]!,
+        AppButtonType.primary => AppColors.primary,
+        AppButtonType.secondary => AppColors.secondary,
+        AppButtonType.tertiary => AppColors.tertiary,
         AppButtonType.danger => AppColors.danger,
         AppButtonType.tertiaryDanger => AppColors.gray[100]!,
       };
 
   /// Get disabled button color according to the button type
   Color get disabledButtonColor => switch (_buttonType) {
-        AppButtonType.primary => AppColors.gray[500]!,
-        AppButtonType.secondary => AppColors.gray[400]!,
-        AppButtonType.tertiary => AppColors.gray[25]!,
+        AppButtonType.primary => AppColors.primary.shade100,
+        AppButtonType.secondary => AppColors.secondary.shade100,
+        AppButtonType.tertiary => AppColors.tertiary.shade100,
         AppButtonType.danger => AppColors.gray[500]!,
         AppButtonType.tertiaryDanger => AppColors.gray[25]!,
       };
@@ -232,7 +232,7 @@ class AppButton extends StatelessWidget {
   /// Get button foreground color according to the button type
   Color get foregroundColor => switch (_buttonType) {
         AppButtonType.primary => AppColors.white,
-        AppButtonType.secondary => AppColors.ceruleanBlue[600]!,
+        AppButtonType.secondary => AppColors.white,
         AppButtonType.tertiary => AppColors.gray[700]!,
         AppButtonType.danger => AppColors.white,
         AppButtonType.tertiaryDanger => AppColors.danger,
@@ -245,8 +245,8 @@ class AppButton extends StatelessWidget {
 
   /// Get active button color according to the button type
   Color get activeButtonColor => switch (_buttonType) {
-        AppButtonType.primary => AppColors.ceruleanBlue[800]!,
-        AppButtonType.secondary => AppColors.ceruleanBlue[50]!,
+        AppButtonType.primary => AppColors.primary[800]!,
+        AppButtonType.secondary => AppColors.primary[50]!,
         AppButtonType.tertiary => AppColors.gray[200]!,
         AppButtonType.danger => AppColors.danger.withAlpha(125),
         AppButtonType.tertiaryDanger => AppColors.gray[200]!,
@@ -286,7 +286,14 @@ class AppButton extends StatelessWidget {
           ],
 
           /// Label widget
-          Text(_label ?? '', style: textStyle),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 2),
+            child: Text(
+              _label ?? '',
+              style: textStyle,
+              textAlign: TextAlign.center,
+            ),
+          ),
 
           /// If the leading widget exist
           if (_trailing != null) ...[
@@ -297,20 +304,39 @@ class AppButton extends StatelessWidget {
       );
     }
 
+    final style = ButtonStyle(
+      padding: MaterialStateProperty.all(padding),
+      textStyle: MaterialStateProperty.all(textStyle),
+      backgroundColor:
+          onPressed == null ? MaterialStateProperty.all(disabledButtonColor) : MaterialStateProperty.all(buttonColor),
+      elevation: MaterialStateProperty.all(_elevation),
+      foregroundColor: onPressed == null
+          ? MaterialStateProperty.all(disabledForegroundColor)
+          : MaterialStateProperty.all(foregroundColor),
+      shape: MaterialStateProperty.all(
+        _iconOnly
+            ? RoundedRectangleBorder(
+                borderRadius: borderRadius,
+              )
+            : RoundedRectangleBorder(
+                borderRadius: borderRadius,
+              ),
+      ),
+      minimumSize: !_iconOnly ? null : MaterialStateProperty.all(Size.zero),
+      tapTargetSize: !_iconOnly ? null : MaterialTapTargetSize.shrinkWrap,
+    );
+
+    if (_iconOnly) {
+      return IconButton(
+        onPressed: onPressed,
+        style: style,
+        icon: child,
+      );
+    }
+
     return ElevatedButton(
       onPressed: onPressed,
-      style: ButtonStyle(
-        padding: MaterialStateProperty.all(padding),
-        textStyle: MaterialStateProperty.all(textStyle),
-        backgroundColor: onPressed == null ? MaterialStateProperty.all(disabledButtonColor) : MaterialStateProperty.all(buttonColor),
-        elevation: MaterialStateProperty.all(_elevation),
-        foregroundColor: onPressed == null ? MaterialStateProperty.all(disabledForegroundColor) : MaterialStateProperty.all(foregroundColor),
-        shape: MaterialStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: borderRadius,
-          ),
-        ),
-      ),
+      style: style,
       child: child,
     );
   }

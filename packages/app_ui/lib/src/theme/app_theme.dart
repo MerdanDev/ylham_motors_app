@@ -14,7 +14,39 @@ class AppTheme {
   /// Default `ThemeData` for App UI.
   ThemeData get themeData {
     return ThemeData(
-      primaryColor: AppColors.primary,
+      colorScheme: const ColorScheme(
+        brightness: Brightness.light,
+        primary: AppColors.primary,
+        onPrimary: Colors.white,
+        secondary: AppColors.secondary,
+        onSecondary: Colors.white,
+        error: Colors.red,
+        onError: Colors.white,
+        background: Color(0xFFFAFAFA),
+        onBackground: Colors.black,
+        surface: Colors.white,
+        onSurface: Colors.black,
+        tertiary: AppColors.tertiary,
+        onTertiary: Colors.white,
+        // errorContainer: Colors.red.shade100,
+        // inversePrimary: Colors.white,
+        // inverseSurface: Colors.black,
+        // onErrorContainer: Colors.white70,
+        // onInverseSurface: Colors.white,
+        // onPrimaryContainer: Colors.white70,
+        // onSecondaryContainer: Colors.white70,
+        // onSurfaceVariant: Colors.grey.shade400,
+        // onTertiaryContainer: Colors.black,
+        // outline: Colors.grey.shade800,
+        // outlineVariant: Colors.grey.shade500,
+        // primaryContainer: AppColors.primary.shade800,
+        // scrim: Colors.black54,
+        // secondaryContainer: AppColors.primary.shade200,
+        // shadow: Colors.grey.shade600,
+        // surfaceTint: AppColors.primary,
+        // surfaceVariant: Colors.grey.shade200,
+        // tertiaryContainer: AppColors.tertiary.shade200,
+      ),
       canvasColor: _backgroundColor,
       scaffoldBackgroundColor: _backgroundColor,
       // iconTheme: _iconTheme,
@@ -32,8 +64,8 @@ class AppTheme {
       // listTileTheme: _listTileTheme,
       // switchTheme: _switchTheme,
       // progressIndicatorTheme: _progressIndicatorTheme,
-      // tabBarTheme: _tabBarTheme,
-      // bottomNavigationBarTheme: _bottomAppBarTheme,
+      tabBarTheme: _tabBarTheme,
+      bottomNavigationBarTheme: _bottomAppBarTheme,
       // chipTheme: _chipTheme,
     );
   }
@@ -65,10 +97,10 @@ class AppTheme {
   AppBarTheme get _appBarTheme {
     return AppBarTheme(
       iconTheme: _iconTheme,
-      titleTextStyle: _textTheme.titleLarge,
+      titleTextStyle: const AppTextStyle.display().xs().semiBold(),
       elevation: 1,
       toolbarHeight: 64,
-      backgroundColor: Colors.amber,
+      backgroundColor: AppColors.primary,
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light,
@@ -82,6 +114,17 @@ class AppTheme {
         );
   }
 
+  BottomNavigationBarThemeData get _bottomAppBarTheme {
+    return BottomNavigationBarThemeData(
+      // backgroundColor: AppColors.primary.shade100,
+      type: BottomNavigationBarType.fixed,
+      selectedItemColor: AppColors.primary,
+      unselectedItemColor: AppColors.secondaryGray,
+      selectedLabelStyle: const AppTextStyle.text().medium().copyWith(color: AppColors.primary, fontSize: 11),
+      unselectedLabelStyle: const AppTextStyle.text().regular().copyWith(color: AppColors.secondaryGray, fontSize: 10),
+    );
+  }
+
   // DividerThemeData get _dividerTheme {
   //   return const DividerThemeData(
   //     color: AppColors.outlineLight,
@@ -92,7 +135,7 @@ class AppTheme {
   //   );
   // }
 
-  TextTheme get _textTheme => uiTextTheme;
+  // TextTheme get _textTheme => uiTextTheme;
 
   // /// The Content text theme based on [ContentTextStyle].
   // static final contentTextTheme = TextTheme(
@@ -115,8 +158,8 @@ class AppTheme {
   //   decorationColor: AppColors.black,
   // );
 
-  // /// The UI text theme based on [UITextStyle].
-  static final uiTextTheme = TextTheme(
+  /// The UI text theme based on [AppTextStyle].
+  static final uiTextTheme = const TextTheme(
           // displayLarge: UITextStyle.headline1,
           // displayMedium: UITextStyle.headline2,
           // displaySmall: UITextStyle.headline3,
@@ -235,25 +278,21 @@ class AppTheme {
   //   );
   // }
 
-  // TabBarTheme get _tabBarTheme {
-  //   return TabBarTheme(
-  //     labelStyle: UITextStyle.button,
-  //     labelColor: AppColors.darkAqua,
-  //     labelPadding: const EdgeInsets.symmetric(
-  //       horizontal: AppSpacing.lg,
-  //       vertical: AppSpacing.md + AppSpacing.xxs,
-  //     ),
-  //     unselectedLabelStyle: UITextStyle.button,
-  //     unselectedLabelColor: AppColors.mediumEmphasisSurface,
-  //     indicator: const UnderlineTabIndicator(
-  //       borderSide: BorderSide(
-  //         width: 3,
-  //         color: AppColors.darkAqua,
-  //       ),
-  //     ),
-  //     indicatorSize: TabBarIndicatorSize.label,
-  //   );
-  // }
+  TabBarTheme get _tabBarTheme {
+    return const TabBarTheme(
+      // labelStyle: ,
+      labelColor: AppColors.white,
+      // unselectedLabelStyle: UITextStyle.button,
+      // unselectedLabelColor: AppColors.mediumEmphasisSurface,
+      // indicator: UnderlineTabIndicator(
+      //   borderSide: BorderSide(
+      //     width: 3,
+      //     color: AppColors.white,
+      //   ),
+      // ),
+      // indicatorSize: TabBarIndicatorSize.label,
+    );
+  }
 }
 
 // InputBorder get _textFieldBorder => const UnderlineInputBorder(
@@ -262,14 +301,6 @@ class AppTheme {
 //         color: AppColors.darkAqua,
 //       ),
 //     );
-
-// BottomNavigationBarThemeData get _bottomAppBarTheme {
-//   return BottomNavigationBarThemeData(
-//     backgroundColor: AppColors.darkBackground,
-//     selectedItemColor: AppColors.white,
-//     unselectedItemColor: AppColors.white.withOpacity(0.74),
-//   );
-// }
 
 // ChipThemeData get _chipTheme {
 //   return const ChipThemeData(

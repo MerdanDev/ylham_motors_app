@@ -1,6 +1,94 @@
 {
     "@@locale": "tk", 
-    "cardClosed": "Ýapyk",
-    "cardRestOpening": "açylýar",
-    "cardDiscount": "Arzanladyş"
+
+    "networkError": "Internet birikmesi ýok.",
+    "networkErrorDescription": "Birnäçe wagtdan soň synanyşmagyňyzy Sizden haýyş edýäris.",
+    "networkErrorButton": "Gaýtadan synanyşyň",
+
+    "services": "Bölümler",
+
+    "entryPage": "Baş sahypa",
+    "main": "Esasy",
+
+    "profile": "Profil",
+    "profileEdit": "Profili sazlamak",
+    
+    "firstname": "Ady",
+    "lastname": "Familiýasy",
+    "email": "Elektron poçtasy",
+
+    "technicalSupportTitle": "Tehniki kömek",
+    "technicalSupportDescription": "Soraglaryňyz boýunça habarlaşmak",
+    
+    "manageAddressesTitle": "Salgylarym",
+    "manageAddressesDescription": "Salgylaryňyzy dolandyryň",
+
+    "settings": "Sazlamalar",
+
+    "language": "Dil",
+    "languageSelectTitle": "Dil",
+    "languageSelectDescription": "Programmanyň dilini saýlaň",
+
+    "startShopping": "Söwda başla",
+    
+    "order": "Sargyt",
+    "orderTotal": "Sargyt hasabyňyz",
+
+    "orders": "Sargytlarym",
+    "ordersEmptyTitle": "Sargyt ýok",
+    "ordersEmptyDescription": "Sargytlaryňyzyň sanawy şu ýerde görkeziler",
+
+    "productSize": "Ölçegi",
+    "productColor": "Reňki",
+    "productPrice": "Bahasy",
+
+    "addresses": "Salgylarym",
+    "addressesCreate": "Salgy goş",
+
+    "checkOutCompleteTitle": "Sargydyňyz ýerleşdirildi",
+    "checkOutCompleteContent": "Operator Size jaň eder sargydyňyzy tassyklamak üçin jaň eder!",
+
+    "deliveryTariffTitle": "Eltip berme görnüşi",
+
+    "trackOrder": "Sargydy yzarla",
+    "complete": "Tamamla",
+    "confirm": "Tassykla",
+
+    "goToTheCart": "Sebede git",
+
+    "totalCost": "Umumy baha",
+
+    "paymentMethod": "Töleg usuly",
+    "paymentMethodCash": "Nagt",
+    "paymentMethodTerminal": "Terminal",
+
+    "orderType": "Sargyt görnüşi",
+
+    "orderConfirmation": "Sargydy tassyklamak",
+
+    "orderNotes": "Sargyt üçin bellik",
+    "orderNotesDescription": "Ýörite haýyşlar, ýa-da eltip berme üçin bellikler",
+    "orderNotesDescription2": "Ýörite haýyşlar, allergiýa, iýmitleniş çäklendirmeleri",
+
+    "selectAddress": "Salgyňyzy saýlan",
+    "selectAddressEmpty": "Saýlanmadyk",
+
+    "cart": "Sebet",
+    "cartAddSuccess": "Haryt üstünlikli sebede goşyldy",
+    
+    "cartClearTitle": "Pozmagy tassyklaň",
+    "cartClearContent": "Tassyklamak düwmesine basylanyndan soňra sebediňizdäki harytlary gaýtadan dikeltmek mümkin däldir.",
+    
+    "cartEmptyTitle": "Sebet boş",
+    "cartEmptyDescription": "Sebetiň sanawy şu ýerde görkeziler",
+
+    "placeAnOrder": "Sargyt et",
+
+    "success": "Üstünlik",
+    "cancel": "Ýatyr",
+    "close": "Ýap",
+    "clear": "Pozmak",
+
+    "productsEmptyTitle": "Harytlar Tapylmady",
+    "productsEmptyDescription": "Häzirki wagtda harytlar ýok."
 }

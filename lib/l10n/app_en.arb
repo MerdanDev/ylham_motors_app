@@ -1,5 +1,94 @@
 {
-    "cardClosed": "Closed",
-    "cardRestOpening": "opens",
-    "cardDiscount": "Discount"
+    "@@locale": "en",
+
+    "networkError": "No internet connection.",
+    "networkErrorDescription": "Please try again later.",
+    "networkErrorButton": "Try Again",
+    
+    "services": "Sections",
+
+    "entryPage": "Homepage",
+    "main": "Main",
+
+    "profile": "Profile",
+    "profileEdit": "Edit Profile",
+    
+    "firstname": "First Name",
+    "lastname": "Last Name",
+    "email": "Email",
+
+    "technicalSupportTitle": "Technical Support",
+    "technicalSupportDescription": "Contact us for assistance",
+
+    "manageAddressesTitle": "Manage Addresses",
+    "manageAddressesDescription": "Manage your addresses",
+
+    "settings": "Settings",
+
+    "language": "Language",
+    "languageSelectTitle": "Language Selection",
+    "languageSelectDescription": "Choose the application language",
+
+    "startShopping": "Start Shopping",
+
+    "order": "Order",
+    "orderTotal": "Order Total",
+
+    "orders": "My Orders",
+    "ordersEmptyTitle": "No Orders",
+    "ordersEmptyDescription": "Your orders are displayed here",
+
+    "productSize": "Size",
+    "productColor": "Color",
+    "productPrice": "Price per item",
+
+    "addresses": "My Addresses",
+    "addressesCreate": "Add Address",
+
+    "checkOutCompleteTitle": "Order Placed",
+    "checkOutCompleteContent": "An operator will contact you to confirm the order!",
+
+    "deliveryTariffTitle": "Delivery Type",
+
+    "trackOrder": "Track Order",
+    "complete": "Complete",
+    "confirm": "Confirm",
+
+    "goToTheCart": "Go to Cart",
+
+    "totalCost": "Total Cost",
+
+    "paymentMethod": "Payment Method",
+    "paymentMethodCash": "Cash",
+    "paymentMethodTerminal": "Terminal",
+
+    "orderType": "Order Type",
+
+    "orderConfirmation": "Order Confirmation",
+
+    "orderNotes": "Order Notes",
+    "orderNotesDescription": "Additional instructions or notes for the order",
+    "orderNotesDescription2": "Additional instructions, allergies, preferences",
+
+    "selectAddress": "Select Address",
+    "selectAddressEmpty": "Not Selected",
+
+    "cart": "Cart",
+    "cartAddSuccess": "Product successfully added to cart",
+    
+    "cartClearTitle": "Clear Cart",
+    "cartClearContent": "After pressing the confirm button, you will not be able to recover the items in the cart.",
+
+    "cartEmptyTitle": "Cart is Empty",
+    "cartEmptyDescription": "Items in your cart are displayed here",
+
+    "placeAnOrder": "Place an Order",
+
+    "success": "Success",
+    "cancel": "Cancel",
+    "close": "Close",
+    "clear": "Clear",
+
+    "productsEmptyTitle": "No Products Found",
+    "productsEmptyDescription": "No products available at this time."
 }

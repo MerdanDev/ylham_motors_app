@@ -40,8 +40,15 @@ dependencies:
   storage:
     path: ./packages/storage/storage
   flutter_screenutil: ^5.9.0
+  form_inputs:
+    path: ./packages/form_inputs
   cached_network_image: ^3.3.0
-
+  phosphor_flutter: ^2.0.1
+  shimmer: ^3.0.0
+  flutter_hooks: ^0.20.5
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  
 dev_dependencies:
   build_runner: ^2.4.6
   envied_generator: ^0.3.0+3

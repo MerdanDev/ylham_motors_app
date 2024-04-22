@@ -1,18 +1,93 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'package:flutter/material.dart';
 
 /// Defines the color palette for the App UI Kit.
 class AppColors {
   /// Primary color
-  static const Color primary = Color(0xFF3E52BC);
+  static const MaterialColor primary = motoblue; // Colors.lightBlue;
+
+  /// From icon blue color
+  static const MaterialColor motoblue = MaterialColor(_motobluePrimaryValue, <int, Color>{
+    50: Color(0xFFE2F2F9),
+    100: Color(0xFFB8DFF0),
+    200: Color(0xFF88CAE6),
+    300: Color(0xFF58B4DB),
+    400: Color(0xFF35A4D4),
+    500: Color(_motobluePrimaryValue),
+    600: Color(0xFF0F8CC7),
+    700: Color(0xFF0C81C0),
+    800: Color(0xFF0A77B9),
+    900: Color(0xFF0565AD),
+  });
+
+  static const int _motobluePrimaryValue = 0xFF1194CC;
+
+  /// Motoblue color accent
+  static const MaterialColor motoblueAccent = MaterialColor(_motoblueAccentValue, <int, Color>{
+    100: Color(0xFFD8ECFF),
+    200: Color(_motoblueAccentValue),
+    400: Color(0xFF72BBFF),
+    700: Color(0xFF59AFFF),
+  });
+  static const int _motoblueAccentValue = 0xFFA5D4FF;
+
+  /// Coral color
+  static const MaterialColor coral = MaterialColor(_coralPrimaryValue, <int, Color>{
+    50: Color(0xFFFFF0EA),
+    100: Color(0xFFFFD9CB),
+    200: Color(0xFFFFBFA8),
+    300: Color(0xFFFFA585),
+    400: Color(0xFFFF926A),
+    500: Color(_coralPrimaryValue),
+    600: Color(0xFFFF7749),
+    700: Color(0xFFFF6C40),
+    800: Color(0xFFFF6237),
+    900: Color(0xFFFF4F27),
+  });
+  static const int _coralPrimaryValue = 0xFFFF7F50;
+
+  /// Coral color accent
+  static const MaterialColor coralAccent = MaterialColor(_coralAccentValue, <int, Color>{
+    100: Color(0xFFFFFFFF),
+    200: Color(_coralAccentValue),
+    400: Color(0xFFFFDBD4),
+    700: Color(0xFFFFC6BB),
+  });
+  static const int _coralAccentValue = 0xFFFFFFFF;
+
+  /// Tan color
+  static const MaterialColor tan = MaterialColor(_tanPrimaryValue, <int, Color>{
+    50: Color(0xFFF0F8FC),
+    100: Color(0xFFD8EFF7),
+    200: Color(0xFFBFE4F1),
+    300: Color(0xFFA5D9EB),
+    400: Color(0xFF91D0E7),
+    500: Color(_tanPrimaryValue),
+    600: Color(0xFF76C2E0),
+    700: Color(0xFF6BBBDC),
+    800: Color(0xFF61B4D8),
+    900: Color(0xFF4EA7D0),
+  });
+  static const int _tanPrimaryValue = 0xFF7EC8E3;
+
+  /// Tan accent
+  static const MaterialColor tanAccent = MaterialColor(_tanAccentValue, <int, Color>{
+    100: Color(0xFFFFFFFF),
+    200: Color(_tanAccentValue),
+    400: Color(0xFFC7EDFF),
+    700: Color(0xFFADE4FF),
+  });
+  static const int _tanAccentValue = 0xFFFAFDFF;
 
   // /// Primary active color
-  // static const Color primaryActive = Color(0xFF253BAE);
+  // static const Color primaryActive = primary[700]!;
 
   // /// Primary disabled color
   // static const Color primaryDisabled = Color(0xFF98A2B3);
 
   /// Secondary color
-  static const Color secondary = Color(0xFFDDECFF); // Color(0xFFFEC41F);
+  static const MaterialColor secondary = coral; // Color(0xFFFEC41F);
 
   // /// Secondary active color
   // static const Color secondaryActive = Color(0xFFECF5FF);
@@ -24,7 +99,7 @@ class AppColors {
   static const Color secondaryGray = Color(0xFF919299);
 
   /// Tertiary color
-  static const Color tertiary = Color(0xFFF2F4F7); // Color(0xFFE3E3E5);
+  static const MaterialColor tertiary = tan; // Color(0xFFE3E3E5);
 
   // /// Tertiary active color
   // static const Color tertiaryActive = Color(0xFFEAECF0);
@@ -58,27 +133,6 @@ class AppColors {
 
   /// The grey primary color and swatch.
   static const MaterialColor grey = Colors.grey;
-
-  /// Cerulean blue color & swatch
-  static const MaterialColor ceruleanBlue = MaterialColor(
-    _primaryCerBlue,
-    <int, Color>{
-      50: Color(0xFFF2F5FC),
-      100: Color(0xFFe2e8f7),
-      150: Color(0xFFcbd7f2),
-      200: Color(0xFFa7bee9),
-      300: Color(0xFF7d9cdd),
-      400: Color(0xFF5f7cd2),
-      500: Color(_primaryCerBlue),
-      600: Color(0xFF3E52BC),
-      700: Color(0xFF4252b8),
-      800: Color(0xFF3a4493),
-      900: Color(0xFF333c75),
-      950: Color(0xFF232648),
-    },
-  );
-
-  static const int _primaryCerBlue = 0xFF4b62c5;
 
   /// The gray neutral color and swatch.
   static const MaterialColor gray = MaterialColor(
@@ -124,4 +178,26 @@ class AppColors {
   static const Color disabledSurface = Color(0xFFE0E0E0);
 
   // static const int _lightGreenPrimaryValue = 0xFF8BC34A;
+
+  /// Silver color
+  static const Color silver = Color(0xFFC0C0C0);
+
+  // static const int _primarySilver = 0xFFC0C0C0;
+
+  // /// Silver color
+  // static const MaterialColor silver = MaterialColor(
+  //   _primarySilver,
+  //   {
+  //     50: Color.fromRGBO(106, 106, 106, 1),
+  //     100: Color.fromRGBO(115, 115, 115, 1),
+  //     200: Color.fromRGBO(134, 134, 134, 1),
+  //     300: Color.fromRGBO(154, 154, 154, 1),
+  //     400: Color.fromRGBO(173, 173, 173, 1),
+  //     500: Color.fromRGBO(192, 192, 192, 1),
+  //     600: Color.fromRGBO(173, 173, 173, 1),
+  //     700: Color.fromRGBO(154, 154, 154, 1),
+  //     800: Color.fromRGBO(134, 134, 134, 1),
+  //     900: Color.fromRGBO(115, 115, 115, 1),
+  //   },
+  // );
 }
