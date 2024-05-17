@@ -9,6 +9,10 @@ class CartContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cart = context.select((CartBloc bloc) => bloc.state.cart);
+    final isCartEmpty = context.select((CartBloc bloc) => bloc.state.isCartEmpty);
+
+    /// CART EMPTY
+    if (isCartEmpty) return const CartEmpty();
 
     return Column(
       children: [
@@ -24,7 +28,7 @@ class CartContent extends StatelessWidget {
         ),
 
         /// FOOTER
-        const CartFooter(),
+        if (!isCartEmpty) const CartFooter(),
       ],
     );
   }

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:turkmen_localization_support/turkmen_localization_support.dart';
 import 'package:ylham_motors/addresses/addresses.dart';
 import 'package:ylham_motors/app/app.dart';
 import 'package:ylham_motors/auth/data/repository/auth_repository.dart';
@@ -130,9 +131,8 @@ class _AppViewState extends State<AppView> {
       debugShowCheckedModeBanner: false,
       theme: const AppTheme().themeData,
       localizationsDelegates: const [
-        TkMaterialLocalizations.delegate,
-        TkCupertinoLocalizations.delegate,
         ...AppLocalizations.localizationsDelegates,
+        ...TkDelegates.delegates,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       home: const BottomNavBar(),

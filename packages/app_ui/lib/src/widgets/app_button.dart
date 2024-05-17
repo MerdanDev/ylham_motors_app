@@ -262,7 +262,7 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = _textStyle ?? this.textStyle;
 
-    final padding = _padding ?? (_iconOnly ? iconButtonPadding : this.padding);
+    EdgeInsets? padding = _padding ?? (_iconOnly ? iconButtonPadding : this.padding);
     final borderRadius = _borderRadius ?? _defaultBorderRadius;
 
     final buttonColor = _buttonColor ?? this.buttonColor;
@@ -272,6 +272,14 @@ class AppButton extends StatelessWidget {
 
     late Widget child;
 
+    if (_trailing != null) {
+      padding = padding.copyWith(right: iconButtonPadding.right);
+    }
+
+    if (_leading != null) {
+      padding = padding.copyWith(left: iconButtonPadding.left);
+    }
+
     /// Is button icon only
     if (_iconOnly) {
       child = _leading!;
@@ -279,15 +287,15 @@ class AppButton extends StatelessWidget {
       child = Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          /// If the leading widget exist
+          /// LEADING WIDGET
           if (_leading != null) ...[
             _leading!,
-            const SizedBox(width: AppSpacing.sm),
+            SizedBox(width: iconButtonPadding.right),
           ],
 
-          /// Label widget
+          /// LABEL
           Padding(
-            padding: const EdgeInsets.only(bottom: 2),
+            padding: const EdgeInsets.only(bottom: 4),
             child: Text(
               _label ?? '',
               style: textStyle,
@@ -295,9 +303,9 @@ class AppButton extends StatelessWidget {
             ),
           ),
 
-          /// If the leading widget exist
+          /// TRAILING WIDGET
           if (_trailing != null) ...[
-            const SizedBox(width: AppSpacing.sm),
+            SizedBox(width: iconButtonPadding.left),
             _trailing!,
           ],
         ],

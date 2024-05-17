@@ -27,7 +27,7 @@ class PhoneInput extends StatelessWidget {
         border: OutlineInputBorder(),
         labelText: "Telefon belgiňiz",
         hintText: "61234567",
-        prefixIcon: SizedBox.shrink(child: Center(child: Text("+993"))),
+        prefixText: "+993 ",
         suffixIcon: PhosphorIcon(PhosphorIconsBold.phone),
         // errorText: error,
       ),

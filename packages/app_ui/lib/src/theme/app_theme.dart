@@ -14,52 +14,19 @@ class AppTheme {
   /// Default `ThemeData` for App UI.
   ThemeData get themeData {
     return ThemeData(
-      colorScheme: const ColorScheme(
-        brightness: Brightness.light,
-        primary: AppColors.primary,
-        onPrimary: Colors.white,
-        secondary: AppColors.secondary,
-        onSecondary: Colors.white,
-        error: Colors.red,
-        onError: Colors.white,
-        background: Color(0xFFFAFAFA),
-        onBackground: Colors.black,
-        surface: Colors.white,
-        onSurface: Colors.black,
-        tertiary: AppColors.tertiary,
-        onTertiary: Colors.white,
-        // errorContainer: Colors.red.shade100,
-        // inversePrimary: Colors.white,
-        // inverseSurface: Colors.black,
-        // onErrorContainer: Colors.white70,
-        // onInverseSurface: Colors.white,
-        // onPrimaryContainer: Colors.white70,
-        // onSecondaryContainer: Colors.white70,
-        // onSurfaceVariant: Colors.grey.shade400,
-        // onTertiaryContainer: Colors.black,
-        // outline: Colors.grey.shade800,
-        // outlineVariant: Colors.grey.shade500,
-        // primaryContainer: AppColors.primary.shade800,
-        // scrim: Colors.black54,
-        // secondaryContainer: AppColors.primary.shade200,
-        // shadow: Colors.grey.shade600,
-        // surfaceTint: AppColors.primary,
-        // surfaceVariant: Colors.grey.shade200,
-        // tertiaryContainer: AppColors.tertiary.shade200,
-      ),
       canvasColor: _backgroundColor,
       scaffoldBackgroundColor: _backgroundColor,
       // iconTheme: _iconTheme,
       appBarTheme: _appBarTheme,
       // dividerTheme: _dividerTheme,
-      // textTheme: _textTheme,
-      // inputDecorationTheme: _inputDecorationTheme,
+      textTheme: _textTheme,
+      inputDecorationTheme: _inputDecorationTheme,
       // buttonTheme: _buttonTheme,
       // splashColor: AppColors.transparent,
       // snackBarTheme: _snackBarTheme,
       // elevatedButtonTheme: _elevatedButtonTheme,
       // textButtonTheme: _textButtonTheme,
-      // colorScheme: _colorScheme,
+      colorScheme: _colorScheme,
       // bottomSheetTheme: _bottomSheetTheme,
       // listTileTheme: _listTileTheme,
       // switchTheme: _switchTheme,
@@ -70,12 +37,41 @@ class AppTheme {
     );
   }
 
-  // ColorScheme get _colorScheme {
-  //   return ColorScheme.light(
-  //     secondary: AppColors.secondary,
-  //     background: _backgroundColor,
-  //   );
-  // }
+  ColorScheme get _colorScheme {
+    return const ColorScheme(
+      brightness: Brightness.light,
+      primary: AppColors.primary,
+      onPrimary: Colors.white,
+      secondary: AppColors.secondary,
+      onSecondary: Colors.white,
+      error: Colors.red,
+      onError: Colors.white,
+      background: Color(0xFFFAFAFA),
+      onBackground: Colors.black,
+      surface: Colors.white,
+      onSurface: Colors.black,
+      tertiary: AppColors.tertiary,
+      onTertiary: Colors.white,
+      // errorContainer: Colors.red.shade100,
+      // inversePrimary: Colors.white,
+      // inverseSurface: Colors.black,
+      // onErrorContainer: Colors.white70,
+      // onInverseSurface: Colors.white,
+      // onPrimaryContainer: Colors.white70,
+      // onSecondaryContainer: Colors.white70,
+      // onSurfaceVariant: Colors.grey.shade400,
+      // onTertiaryContainer: Colors.black,
+      // outline: Colors.grey.shade800,
+      // outlineVariant: Colors.grey.shade500,
+      // primaryContainer: AppColors.primary.shade800,
+      // scrim: Colors.black54,
+      // secondaryContainer: AppColors.primary.shade200,
+      // shadow: Colors.grey.shade600,
+      // surfaceTint: AppColors.primary,
+      // surfaceVariant: Colors.grey.shade200,
+      // tertiaryContainer: AppColors.tertiary.shade200,
+    );
+  }
 
   // SnackBarThemeData get _snackBarTheme {
   //   return SnackBarThemeData(
@@ -96,8 +92,8 @@ class AppTheme {
 
   AppBarTheme get _appBarTheme {
     return AppBarTheme(
-      iconTheme: _iconTheme,
-      titleTextStyle: const AppTextStyle.display().xs().semiBold(),
+      iconTheme: _iconTheme.copyWith(color: AppColors.white),
+      titleTextStyle: const AppTextStyle.display().xs().semiBold().copyWith(letterSpacing: 1, fontFamily: 'Ubuntu'),
       elevation: 1,
       toolbarHeight: 64,
       backgroundColor: AppColors.primary,
@@ -135,7 +131,7 @@ class AppTheme {
   //   );
   // }
 
-  // TextTheme get _textTheme => uiTextTheme;
+  TextTheme get _textTheme => uiTextTheme;
 
   // /// The Content text theme based on [ContentTextStyle].
   // static final contentTextTheme = TextTheme(
@@ -159,47 +155,43 @@ class AppTheme {
   // );
 
   /// The UI text theme based on [AppTextStyle].
-  static final uiTextTheme = const TextTheme(
-          // displayLarge: UITextStyle.headline1,
-          // displayMedium: UITextStyle.headline2,
-          // displaySmall: UITextStyle.headline3,
-          // headlineMedium: UITextStyle.headline4,
-          // headlineSmall: UITextStyle.headline5,
-          // titleLarge: UITextStyle.headline6,
-          // titleMedium: UITextStyle.subtitle1,
-          // titleSmall: UITextStyle.subtitle2,
-          // bodyLarge: UITextStyle.bodyText1,
-          // bodyMedium: UITextStyle.bodyText2,
-          // labelLarge: UITextStyle.button,
-          // bodySmall: UITextStyle.caption,
-          // labelSmall: UITextStyle.overline,
-          )
-      .apply(
-          // bodyColor: AppColors.black,
-          // displayColor: AppColors.black,
-          // decorationColor: AppColors.black,
-          );
+  static final uiTextTheme = TextTheme(
+    displayLarge: const AppTextStyle.text().headline1(),
+    displayMedium: const AppTextStyle.text().headline2(),
+    displaySmall: const AppTextStyle.text().headline3(),
+    headlineMedium: const AppTextStyle.text().headline4(),
+    headlineSmall: const AppTextStyle.text().headline5(),
+    titleLarge: const AppTextStyle.text().headline6(),
+    titleMedium: const AppTextStyle.text().subtitle1(),
+    titleSmall: const AppTextStyle.text().subtitle2(),
+    bodyLarge: const AppTextStyle.text().bodyText1(),
+    bodyMedium: const AppTextStyle.text().bodyText2(),
+    labelLarge: const AppTextStyle.text().button(),
+    bodySmall: const AppTextStyle.text().caption(),
+    labelSmall: const AppTextStyle.text().overline(),
+  ).apply(
+      // bodyColor: AppColors.black,
+      // displayColor: AppColors.black,
+      // decorationColor: AppColors.black,
+      );
 
-  // InputDecorationTheme get _inputDecorationTheme {
-  //   return InputDecorationTheme(
-  //     suffixIconColor: AppColors.mediumEmphasisSurface,
-  //     prefixIconColor: AppColors.mediumEmphasisSurface,
-  //     hoverColor: AppColors.inputHover,
-  //     focusColor: AppColors.inputFocused,
-  //     fillColor: AppColors.inputEnabled,
-  //     enabledBorder: _textFieldBorder,
-  //     focusedBorder: _textFieldBorder,
-  //     disabledBorder: _textFieldBorder,
-  //     hintStyle: UITextStyle.bodyText1.copyWith(
-  //       color: AppColors.mediumEmphasisSurface,
-  //     ),
-  //     contentPadding: const EdgeInsets.all(AppSpacing.lg),
-  //     border: const UnderlineInputBorder(),
-  //     filled: true,
-  //     isDense: true,
-  //     errorStyle: UITextStyle.caption,
-  //   );
-  // }
+  InputDecorationTheme get _inputDecorationTheme {
+    return InputDecorationTheme(
+      iconColor: AppColors.primary,
+      suffixIconColor: AppColors.primary,
+      prefixIconColor: AppColors.primary,
+      hoverColor: AppColors.primary.shade100.withOpacity(0.5),
+      focusColor: AppColors.primary.shade100.withOpacity(0.2),
+      labelStyle: const AppTextStyle.text().sm().withColor(AppColors.primary.shade500),
+      contentPadding: const EdgeInsets.all(AppSpacing.lg),
+      border: const OutlineInputBorder(),
+      outlineBorder: const BorderSide(color: AppColors.primary),
+      enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: AppColors.primary)),
+      focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: AppColors.primary, width: 2)),
+      filled: true,
+      isDense: true,
+    );
+  }
 
   // ButtonThemeData get _buttonTheme {
   //   return ButtonThemeData(
@@ -282,8 +274,9 @@ class AppTheme {
     return const TabBarTheme(
       // labelStyle: ,
       labelColor: AppColors.white,
+      indicatorColor: AppColors.white,
       // unselectedLabelStyle: UITextStyle.button,
-      // unselectedLabelColor: AppColors.mediumEmphasisSurface,
+      unselectedLabelColor: Colors.white70,
       // indicator: UnderlineTabIndicator(
       //   borderSide: BorderSide(
       //     width: 3,

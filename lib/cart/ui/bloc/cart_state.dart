@@ -24,6 +24,8 @@ class CartState extends Equatable {
   final CartStatus status;
   final Cart? cart;
 
+  bool get isCartEmpty => cart?.items?.isEmpty ?? true;
+
   @override
   List<Object?> get props => [status, cart];
 

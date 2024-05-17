@@ -41,7 +41,6 @@ class ProductsContent extends StatelessWidget {
         CustomScrollView(
           slivers: [
             _buildHeader(context),
-            // _buildItems(context, products, hasMoreContent),
             ProductGridView(
               products: products,
               hasMoreContent: hasMoreContent,

@@ -32,6 +32,7 @@ class LanguageSelectBottomSheet extends StatelessWidget {
           Text(
             l10n.languageSelectTitle,
             style: const AppTextStyle.display().xs().bold(),
+            textAlign: TextAlign.center,
           ),
           const SizedBox(height: AppSpacing.xxs),
 
@@ -39,26 +40,33 @@ class LanguageSelectBottomSheet extends StatelessWidget {
           Text(
             l10n.languageSelectDescription,
             style: const AppTextStyle.text().sm().regular().withColor(Colors.grey.shade500),
+            textAlign: TextAlign.center,
           ),
           const SizedBox(height: AppSpacing.sm),
 
           /// OPTIONS
           ...AppLocalizations.supportedLocales.map(
             (locale) {
-              return CheckboxListTile(
-                onChanged: (value) {
-                  if (value ?? false) {
-                    context.read<LanguageBloc>().add(LanguageChanged(locale));
-                    Navigator.of(context).pop();
-                  }
-                },
-                title: Text(switch (locale.languageCode) {
-                  'ru' => 'Русский язык',
-                  'tk' => 'Türkmen dili',
-                  'en' => 'English',
-                  _ => '???',
-                }),
-                value: locale.languageCode == context.read<LanguageBloc>().state.languageCode,
+              return Padding(
+                padding: const EdgeInsets.only(bottom: AppSpacing.sm),
+                child: AppCard(
+                  padding: EdgeInsets.zero,
+                  child: CheckboxListTile(
+                    onChanged: (value) {
+                      if (value ?? false) {
+                        context.read<LanguageBloc>().add(LanguageChanged(locale));
+                        Navigator.of(context).pop();
+                      }
+                    },
+                    title: Text(switch (locale.languageCode) {
+                      'ru' => 'Русский язык',
+                      'tk' => 'Türkmen dili',
+                      'en' => 'English',
+                      _ => '???',
+                    }),
+                    value: locale.languageCode == context.read<LanguageBloc>().state.languageCode,
+                  ),
+                ),
               );
             },
           ),
