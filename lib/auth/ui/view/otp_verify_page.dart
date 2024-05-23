@@ -12,7 +12,7 @@ class OtpVerifyPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Otp verification"),
       ),
-      body: const OtpVerifyConntent(),
+      body: const OtpVerifyContent(),
     );
   }
 }

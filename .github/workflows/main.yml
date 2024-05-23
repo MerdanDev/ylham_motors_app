@@ -39,6 +39,9 @@ jobs:
     - name: Get dependencies
       run: flutter pub get
 
+    - name: Generete l10n
+      run: flutter gen-l10n
+
     - name: Start release build
       run: flutter build apk --split-per-abi -t lib/main/main.dart
 

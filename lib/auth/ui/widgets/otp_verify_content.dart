@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ylham_motors/auth/auth.dart';
 
-class OtpVerifyConntent extends StatelessWidget {
-  const OtpVerifyConntent({super.key});
+class OtpVerifyContent extends StatelessWidget {
+  const OtpVerifyContent({super.key});
 
   @override
   Widget build(BuildContext context) {
