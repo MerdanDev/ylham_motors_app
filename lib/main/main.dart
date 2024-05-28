@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
+import 'package:secure_storage/secure_storage.dart';
 import 'package:ylham_motors/addresses/addresses.dart';
 import 'package:ylham_motors/app/app.dart';
 import 'package:ylham_motors/auth/auth.dart';
@@ -24,13 +25,15 @@ void main() {
     const defaultBaseUrl = 'http://216.250.12.89/api/v1'; // Env.serverUrl;
 
     /// Storages
-    final tokenStorage = InMemoryTokenStorage();
-    // const secureStorage = FlutterSecureStorage();
+    // final tokenStorage = InMemoryTokenStorage();
+    const secureStorage = FlutterSecureStorage();
+    final tokenStorage = SecureTokenStorage(secureStorage: secureStorage);
+
     if (kDebugMode) {
       tokenStorage.saveToken('55|Hh9SkgxCemrqWabOCPQ9iBJTUGuExBqANNBjEyTs');
       // tokenStorage.saveToken('3|QfjdffhsoR24Qa1bloRtzWWesTW5Wq2kpl2ia7Ga');
     }
-    // const secureStorage = SecureStorage();
+    // const secureoStorage = SecureStorage();
 
     /// intialization of package_info
     // final packageInfo = await PackageInfo.fromPlatform();
@@ -64,7 +67,7 @@ void main() {
     final productRepository = ProductRepository(productClient: productClient);
 
     /// Auth
-    final authClient = AuthClient(httpClient: httpClient);
+    final authClient = AuthClient(httpClient: httpClient, tokenStorage: tokenStorage);
     final authRepository = AuthRepository(authClient: authClient);
 
     /// Addresses

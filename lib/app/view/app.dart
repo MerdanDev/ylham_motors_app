@@ -5,10 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:turkmen_localization_support/turkmen_localization_support.dart';
 import 'package:ylham_motors/addresses/addresses.dart';
 import 'package:ylham_motors/app/app.dart';
+import 'package:ylham_motors/auth/auth.dart';
 import 'package:ylham_motors/auth/data/repository/auth_repository.dart';
 import 'package:ylham_motors/brands/brands.dart';
 import 'package:ylham_motors/cart/cart.dart';
 import 'package:ylham_motors/categories/categories.dart';
+import 'package:ylham_motors/favorites/favorites.dart';
 import 'package:ylham_motors/home/home.dart';
 import 'package:ylham_motors/l10n/l10n.dart';
 import 'package:ylham_motors/language/language.dart';
@@ -71,6 +73,10 @@ class App extends StatelessWidget {
 
     final cartBloc = CartBloc(cartRepository: _cartRepository)..add(CartInitRequested());
 
+    final favoritesBloc = FavoritesBloc(productRepository: _productRepository);
+
+    final authenticationBloc = AuthenticationBloc(authRepository: _authRepository);
+
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider.value(value: _sliderRepository),
@@ -90,6 +96,8 @@ class App extends StatelessWidget {
           BlocProvider.value(value: addressBloc),
           BlocProvider.value(value: languageBloc),
           BlocProvider.value(value: cartBloc),
+          BlocProvider.value(value: favoritesBloc),
+          BlocProvider.value(value: authenticationBloc),
         ],
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -135,7 +143,7 @@ class _AppViewState extends State<AppView> {
         ...TkDelegates.delegates,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const BottomNavBar(),
+      home: const HomePage(),
     );
   }
 }

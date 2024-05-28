@@ -16,7 +16,7 @@ class LoginView extends StatelessWidget {
         listenWhen: (previous, current) => previous.status != current.status,
         listener: (context, state) {
           if (state.status == FormzSubmissionStatus.success) {
-            Navigator.of(context).push(OtpVerifyPage.route());
+            Navigator.of(context).push(OtpVerifyPage.route(phone: state.phone.value));
           }
         },
         child: const LoginContent(),

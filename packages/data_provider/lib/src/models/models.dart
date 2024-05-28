@@ -14,3 +14,4 @@ export 'query_parameters/query_parameters.dart';
 export 'register_request_body/register_request_body.dart';
 export 'slider_item/slider_item.dart';
 export 'slider_list_response/slider_list_response.dart';
+export 'user/user.dart';

@@ -16,6 +16,10 @@ class GetProductsFailure extends ProductFailure {
   const GetProductsFailure(super.error);
 }
 
+class GetFavoritesFailure extends ProductFailure {
+  const GetFavoritesFailure(super.error);
+}
+
 class ProductRepository {
   const ProductRepository({
     required ProductClient productClient,
@@ -28,6 +32,16 @@ class ProductRepository {
       return await _productClient.getProducts(queryParameters);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(GetProductsFailure(error), stackTrace);
+    }
+  }
+
+  Future<ProductListResponse> getFavorites({
+    int page = 1,
+  }) async {
+    try {
+      return await _productClient.getFavorites(page: page);
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(GetFavoritesFailure(error), stackTrace);
     }
   }
 }

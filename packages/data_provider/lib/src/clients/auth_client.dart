@@ -5,9 +5,12 @@ import 'package:data_provider/data_provider.dart';
 class AuthClient {
   const AuthClient({
     required Http httpClient,
-  }) : _http = httpClient;
+    required TokenStorage tokenStorage,
+  })  : _http = httpClient,
+        _tokenStorage = tokenStorage;
 
   final Http _http;
+  final TokenStorage _tokenStorage;
 
   Future<dynamic> register(RegisterRequestBody body) async {
     final response = await _http.post<Map<String, dynamic>>(
@@ -27,12 +30,21 @@ class AuthClient {
     return response;
   }
 
-  Future<bool> verify(AuthVerifyRequestBody body) async {
+  Future<UserResponse> verify(AuthVerifyRequestBody body) async {
     final response = await _http.post<Map<String, dynamic>>(
       '/login/verify',
       data: body.toJson(),
     );
 
-    return response.statusCode == 200;
+    final responseData = UserResponse.fromJson(response.data!);
+
+    await _tokenStorage.saveToken(responseData.data!.apiToken!);
+
+    return responseData;
+  }
+
+  Future<User> getMe() async {
+    final response = await _http.post<Map<String, dynamic>>('/user');
+    return User.fromJson(response.data!);
   }
 }

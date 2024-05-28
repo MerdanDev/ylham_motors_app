@@ -24,6 +24,10 @@ class AuthVerifyFailure extends AuthFailure {
   const AuthVerifyFailure(super.error);
 }
 
+class GetMeFailure extends AuthFailure {
+  const GetMeFailure(super.error);
+}
+
 class AuthRepository {
   const AuthRepository({
     required AuthClient authClient,
@@ -47,11 +51,19 @@ class AuthRepository {
     }
   }
 
-  Future<bool> verify(AuthVerifyRequestBody body) async {
+  Future<UserResponse> verify(AuthVerifyRequestBody body) async {
     try {
       return await _authClient.verify(body);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(AuthVerifyFailure(error), stackTrace);
+    }
+  }
+
+  Future<User> getMe() async {
+    try {
+      return await _authClient.getMe();
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(GetMeFailure(error), stackTrace);
     }
   }
 }

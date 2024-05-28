@@ -7,7 +7,7 @@ import 'package:ylham_motors/home/home.dart';
 import 'package:ylham_motors/masters/masters.dart';
 import 'package:ylham_motors/detailed_product/detailed_product.dart';
 import 'package:ylham_motors/products/products.dart';
-import 'package:ylham_motors_ui/ylham_motors_ui.dart';
+import 'package:ylham_motors/slider/slider.dart';
 
 class HomeContent extends StatelessWidget {
   const HomeContent({super.key});

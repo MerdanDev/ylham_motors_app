@@ -9,8 +9,6 @@ part 'product_event.dart';
 part 'product_state.dart';
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
-  final ProductRepository _productRepository;
-
   ProductsBloc({
     this.category,
     this.brand,
@@ -21,6 +19,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     on<ProductsRefreshRequested>(_onProductsRefreshRequested);
   }
 
+  final ProductRepository _productRepository;
   final CategoryItem? category;
   final BrandItem? brand;
 

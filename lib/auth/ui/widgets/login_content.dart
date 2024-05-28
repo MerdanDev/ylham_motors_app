@@ -12,6 +12,8 @@ class LoginContent extends HookWidget {
   Widget build(BuildContext context) {
     final formKey = useMemoized(() => GlobalKey<FormState>());
 
+    final isLoading = context.select((LoginBloc bloc) => bloc.state.status == FormzSubmissionStatus.inProgress);
+
     return Form(
       key: formKey,
       child: ListView(
@@ -34,6 +36,7 @@ class LoginContent extends HookWidget {
 
           /// Next button
           NextButton(
+            isLoading: isLoading,
             onPressed: () {
               if (formKey.currentState?.validate() ?? false) {
                 context.read<LoginBloc>().add(LoginPhoneSubmitted());

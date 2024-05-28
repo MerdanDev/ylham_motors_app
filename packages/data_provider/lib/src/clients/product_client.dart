@@ -19,4 +19,14 @@ class ProductClient {
 
     return ProductListResponse.fromJson(response.data!);
   }
+
+  Future<ProductListResponse> getFavorites({int page = 1}) async {
+    final response = await _http.get<Map<String, dynamic>>(
+      '/halanlarym',
+      queryParameters: {
+        'page': page,
+      },
+    );
+    return ProductListResponse.fromJson(response.data!);
+  }
 }

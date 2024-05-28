@@ -5,26 +5,28 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ylham_motors/app/app.dart';
 import 'package:ylham_motors/cart/cart.dart';
 import 'package:ylham_motors/categories/categories.dart';
+import 'package:ylham_motors/favorites/favorites.dart';
 import 'package:ylham_motors/home/home.dart';
-import 'package:ylham_motors/masters/masters.dart';
 import 'package:ylham_motors/profile/profile.dart';
 
 enum BottomNavigationBarItemType {
   home,
   category,
   cart,
-  orders,
+  favorites,
   profile,
 }
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
 
+  static Route<void> route() => MaterialPageRoute<void>(builder: (_) => const BottomNavBar());
+
   Map<BottomNavigationBarItemType, Widget> get pages => {
         BottomNavigationBarItemType.home: const HomePage(),
         BottomNavigationBarItemType.category: const CategoriesPage(),
         BottomNavigationBarItemType.cart: const CartPage(),
-        BottomNavigationBarItemType.orders: const MastersPage(),
+        BottomNavigationBarItemType.favorites: const FavoritesPage(),
         BottomNavigationBarItemType.profile: const ProfilePage(),
       };
 
@@ -44,7 +46,7 @@ class BottomNavBar extends StatelessWidget {
           icon: CartQuantityBadge(child: Icon(Icons.shopping_cart_outlined)),
           label: 'Sebet',
         ),
-        BottomNavigationBarItemType.orders: const BottomNavigationBarItem(
+        BottomNavigationBarItemType.favorites: const BottomNavigationBarItem(
           activeIcon: Icon(Icons.favorite_rounded),
           icon: Icon(Icons.favorite_border_rounded),
           label: 'Halanlarym',
@@ -60,7 +62,7 @@ class BottomNavBar extends StatelessWidget {
     BottomNavigationBarItemType.home,
     BottomNavigationBarItemType.category,
     BottomNavigationBarItemType.cart,
-    BottomNavigationBarItemType.orders,
+    BottomNavigationBarItemType.favorites,
     BottomNavigationBarItemType.profile,
   ];
 
@@ -73,7 +75,13 @@ class BottomNavBar extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: itemOrder.indexOf(currentType),
         onTap: (int index) {
-          context.read<AppCubit>().updateAppBottomNavigationBarItemType(itemOrder[index]);
+          final item = itemOrder[index];
+
+          if (item == BottomNavigationBarItemType.favorites) {
+            context.read<FavoritesBloc>().add(FavoritesInitRequested());
+          }
+
+          context.read<AppCubit>().updateAppBottomNavigationBarItemType(item);
         },
         items: itemOrder.map<BottomNavigationBarItem>((e) => items[e]!).toList(),
       ),
