@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ylham_motors/cart/cart.dart';
 import 'package:ylham_motors/detailed_product/detailed_product.dart';
+import 'package:ylham_motors/favorites/favorites.dart';
 import 'package:ylham_motors/products/products.dart';
 
 class DetailedProductContent extends StatelessWidget {
@@ -85,7 +86,8 @@ class DetailedProductContent extends StatelessWidget {
                   flex: 10,
                   child: ProductActionButtons(
                     quantity: context.select((CartBloc bloc) => bloc.getProductQuantity(product.id)),
-                    onFavoritePressed: () {},
+                    isFavorite: product.isFavorite ?? false,
+                    onFavoritePressed: () => context.read<FavoritesBloc>().add(FavoriteButtonPressed(product)),
                     onQuantityUpdated: (quantity) {
                       context.read<CartBloc>().add(
                             CartUpdateRequested(

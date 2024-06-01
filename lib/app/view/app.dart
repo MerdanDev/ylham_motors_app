@@ -6,7 +6,6 @@ import 'package:turkmen_localization_support/turkmen_localization_support.dart';
 import 'package:ylham_motors/addresses/addresses.dart';
 import 'package:ylham_motors/app/app.dart';
 import 'package:ylham_motors/auth/auth.dart';
-import 'package:ylham_motors/auth/data/repository/auth_repository.dart';
 import 'package:ylham_motors/brands/brands.dart';
 import 'package:ylham_motors/cart/cart.dart';
 import 'package:ylham_motors/categories/categories.dart';
@@ -143,7 +142,7 @@ class _AppViewState extends State<AppView> {
         ...TkDelegates.delegates,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const HomePage(),
+      home: const BottomNavBar(),
     );
   }
 }

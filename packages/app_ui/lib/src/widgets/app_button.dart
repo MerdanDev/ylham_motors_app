@@ -313,15 +313,15 @@ class AppButton extends StatelessWidget {
     }
 
     final style = ButtonStyle(
-      padding: MaterialStateProperty.all(padding),
-      textStyle: MaterialStateProperty.all(textStyle),
+      padding: WidgetStateProperty.all(padding),
+      textStyle: WidgetStateProperty.all(textStyle),
       backgroundColor:
-          onPressed == null ? MaterialStateProperty.all(disabledButtonColor) : MaterialStateProperty.all(buttonColor),
-      elevation: MaterialStateProperty.all(_elevation),
+          onPressed == null ? WidgetStateProperty.all(disabledButtonColor) : WidgetStateProperty.all(buttonColor),
+      elevation: WidgetStateProperty.all(_elevation),
       foregroundColor: onPressed == null
-          ? MaterialStateProperty.all(disabledForegroundColor)
-          : MaterialStateProperty.all(foregroundColor),
-      shape: MaterialStateProperty.all(
+          ? WidgetStateProperty.all(disabledForegroundColor)
+          : WidgetStateProperty.all(foregroundColor),
+      shape: WidgetStateProperty.all(
         _iconOnly
             ? RoundedRectangleBorder(
                 borderRadius: borderRadius,
@@ -330,7 +330,7 @@ class AppButton extends StatelessWidget {
                 borderRadius: borderRadius,
               ),
       ),
-      minimumSize: !_iconOnly ? null : MaterialStateProperty.all(Size.zero),
+      minimumSize: !_iconOnly ? null : WidgetStateProperty.all(Size.zero),
       tapTargetSize: !_iconOnly ? null : MaterialTapTargetSize.shrinkWrap,
     );
 

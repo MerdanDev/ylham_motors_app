@@ -19,6 +19,7 @@ ProductItem _$ProductItemFromJson(Map<String, dynamic> json) => ProductItem(
       action: json['action'] as bool?,
       actionText: json['action_text'] as String?,
       proportionalPrice: json['proportional_price'],
+      isFavorite: json['isFavorite'] as bool?,
     );
 
 Map<String, dynamic> _$ProductItemToJson(ProductItem instance) =>
@@ -35,4 +36,5 @@ Map<String, dynamic> _$ProductItemToJson(ProductItem instance) =>
       'action': instance.action,
       'action_text': instance.actionText,
       'proportional_price': instance.proportionalPrice,
+      'isFavorite': instance.isFavorite,
     };

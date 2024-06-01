@@ -18,23 +18,25 @@ class FavoritesContent extends StatelessWidget {
       ),
     );
 
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        /// ITEMS
-        CustomScrollView(
-          slivers: [
-            ProductGridView(
-              products: products,
-              hasMoreContent: hasMoreContent,
-              onLoadMore: () => context.read<FavoritesBloc>().add(FavoritesRequested()),
-            )
-          ],
-        ),
+    return FavoritesRefreshIndicator(
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          /// ITEMS
+          CustomScrollView(
+            slivers: [
+              ProductGridView(
+                products: products,
+                hasMoreContent: hasMoreContent,
+                onLoadMore: () => context.read<FavoritesBloc>().add(FavoritesRequested()),
+              )
+            ],
+          ),
 
-        /// EMPTY HANDLE
-        if (products.isEmpty && !hasMoreContent) const ProductsEmpty(),
-      ],
+          /// EMPTY HANDLE
+          if (products.isEmpty && !hasMoreContent) const ProductsEmpty(),
+        ],
+      ),
     );
   }
 }

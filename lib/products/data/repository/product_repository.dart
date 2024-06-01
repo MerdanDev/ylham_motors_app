@@ -20,6 +20,14 @@ class GetFavoritesFailure extends ProductFailure {
   const GetFavoritesFailure(super.error);
 }
 
+class AddFavoriteFailure extends ProductFailure {
+  const AddFavoriteFailure(super.error);
+}
+
+class RemoveFavoriteFailure extends ProductFailure {
+  const RemoveFavoriteFailure(super.error);
+}
+
 class ProductRepository {
   const ProductRepository({
     required ProductClient productClient,
@@ -42,6 +50,22 @@ class ProductRepository {
       return await _productClient.getFavorites(page: page);
     } catch (error, stackTrace) {
       Error.throwWithStackTrace(GetFavoritesFailure(error), stackTrace);
+    }
+  }
+
+  Future<ProductListResponse> addFavorite(int productId) async {
+    try {
+      return await _productClient.addFavorite(productId);
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(AddFavoriteFailure(error), stackTrace);
+    }
+  }
+
+  Future<ProductListResponse> removeFavorite(int productId) async {
+    try {
+      return await _productClient.removeFavorite(productId);
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(RemoveFavoriteFailure(error), stackTrace);
     }
   }
 }

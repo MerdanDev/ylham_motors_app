@@ -16,6 +16,9 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
     on<FavoritesInitRequested>(_onInitRequested);
     on<FavoritesRequested>(_onRequested);
     on<FavoritesRefreshRequested>(_onRefreshRequested);
+    on<AddFavoriteRequested>(_onAdd);
+    on<RemoveFavoriteRequested>(_onRemove);
+    on<FavoriteButtonPressed>(_onFavoriteButtonPressed);
   }
 
   final ProductRepository _productRepository;
@@ -68,5 +71,72 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   ) async {
     if (state.status != FavoritesStatus.initial) return;
     add(FavoritesRequested());
+  }
+
+  FutureOr<void> _onAdd(
+    AddFavoriteRequested event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: FavoritesStatus.updating));
+
+      await _productRepository.addFavorite(event.product.id!);
+
+      emit(state.copyWith(
+        status: FavoritesStatus.updatingSuccess,
+        // products: {...state.products, ...content}.toList(),
+      ));
+
+      add(FavoritesRefreshRequested());
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: FavoritesStatus.updatingFailure));
+      addError(error, stackTrace);
+    }
+  }
+
+  FutureOr<void> _onRemove(
+    RemoveFavoriteRequested event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: FavoritesStatus.updating));
+
+      await _productRepository.addFavorite(event.product.id!);
+
+      emit(state.copyWith(
+        status: FavoritesStatus.updatingSuccess,
+        // products: {...state.products, ...content}.toList(),
+      ));
+
+      add(FavoritesRefreshRequested());
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: FavoritesStatus.updatingFailure));
+      addError(error, stackTrace);
+    }
+  }
+
+  FutureOr<void> _onFavoriteButtonPressed(
+    FavoriteButtonPressed event,
+    Emitter<FavoritesState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(status: FavoritesStatus.updating));
+
+      if (event.product.isFavorite ?? false) {
+        await _productRepository.removeFavorite(event.product.id!);
+      } else {
+        await _productRepository.addFavorite(event.product.id!);
+      }
+
+      emit(state.copyWith(
+        status: FavoritesStatus.updatingSuccess,
+        // products: {...state.products, ...content}.toList(),
+      ));
+
+      add(FavoritesRefreshRequested());
+    } catch (error, stackTrace) {
+      emit(state.copyWith(status: FavoritesStatus.updatingFailure));
+      addError(error, stackTrace);
+    }
   }
 }

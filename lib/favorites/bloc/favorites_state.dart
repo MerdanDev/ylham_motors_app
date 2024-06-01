@@ -7,6 +7,10 @@ enum FavoritesStatus {
   loading,
   success,
   failure,
+
+  updating,
+  updatingSuccess,
+  updatingFailure,
 }
 
 class FavoritesState extends Equatable {

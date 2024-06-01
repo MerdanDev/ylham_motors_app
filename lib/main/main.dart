@@ -30,8 +30,9 @@ void main() {
     final tokenStorage = SecureTokenStorage(secureStorage: secureStorage);
 
     if (kDebugMode) {
-      tokenStorage.saveToken('55|Hh9SkgxCemrqWabOCPQ9iBJTUGuExBqANNBjEyTs');
-      // tokenStorage.saveToken('3|QfjdffhsoR24Qa1bloRtzWWesTW5Wq2kpl2ia7Ga');
+      // tokenStorage.saveToken('55|Hh9SkgxCemrqWabOCPQ9iBJTUGuExBqANNBjEyTs');
+      tokenStorage.clearToken();
+      tokenStorage.saveToken('58|KuJIYk7d9pJjsKKwdG5JUFySFqBepeNo3PxDmZPF');
     }
     // const secureoStorage = SecureStorage();
 
