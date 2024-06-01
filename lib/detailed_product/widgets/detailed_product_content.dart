@@ -85,8 +85,8 @@ class DetailedProductContent extends StatelessWidget {
                 Expanded(
                   flex: 10,
                   child: ProductActionButtons(
+                    productId: product.id!,
                     quantity: context.select((CartBloc bloc) => bloc.getProductQuantity(product.id)),
-                    isFavorite: product.isFavorite ?? false,
                     onFavoritePressed: () => context.read<FavoritesBloc>().add(FavoriteButtonPressed(product)),
                     onQuantityUpdated: (quantity) {
                       context.read<CartBloc>().add(

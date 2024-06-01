@@ -1,24 +1,27 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ylham_motors/favorites/favorites.dart';
 import 'package:ylham_motors/products/products.dart';
 
 class ProductActionButtons extends StatelessWidget {
   const ProductActionButtons({
+    required this.productId,
     required this.quantity,
-    required this.isFavorite,
     required this.onFavoritePressed,
     required this.onQuantityUpdated,
     Key? key,
   }) : super(key: key);
 
   final int quantity;
-  final bool isFavorite;
+  final int productId;
   final VoidCallback onFavoritePressed;
   final QuantityUpdateCallback onQuantityUpdated;
 
   @override
   Widget build(BuildContext context) {
+    final isFavorite = context.select((FavoritesBloc bloc) => bloc.state.isProductFavorited(productId));
     final color = isFavorite ? Colors.orange : Colors.grey.shade800;
 
     return Row(

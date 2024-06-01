@@ -72,7 +72,7 @@ class App extends StatelessWidget {
 
     final cartBloc = CartBloc(cartRepository: _cartRepository)..add(CartInitRequested());
 
-    final favoritesBloc = FavoritesBloc(productRepository: _productRepository);
+    final favoritesBloc = FavoritesBloc(productRepository: _productRepository)..add(FavoritesInitRequested());
 
     final authenticationBloc = AuthenticationBloc(authRepository: _authRepository);
 

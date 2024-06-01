@@ -53,7 +53,7 @@ class ProductRepository {
     }
   }
 
-  Future<ProductListResponse> addFavorite(int productId) async {
+  Future<dynamic> addFavorite(int productId) async {
     try {
       return await _productClient.addFavorite(productId);
     } catch (error, stackTrace) {
@@ -61,7 +61,7 @@ class ProductRepository {
     }
   }
 
-  Future<ProductListResponse> removeFavorite(int productId) async {
+  Future<dynamic> removeFavorite(int productId) async {
     try {
       return await _productClient.removeFavorite(productId);
     } catch (error, stackTrace) {

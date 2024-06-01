@@ -49,7 +49,7 @@ class ProductClient {
     });
 
     final response = await _http.post<Map<String, dynamic>>(
-      '/halanlarym',
+      '/halanmady',
       data: data,
     );
     return response.data;

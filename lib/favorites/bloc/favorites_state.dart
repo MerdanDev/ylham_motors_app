@@ -28,6 +28,8 @@ class FavoritesState extends Equatable {
   final int page;
   final bool hasMoreContent;
 
+  bool isProductFavorited(int productId) => products.where((e) => e.id == productId).firstOrNull?.isFavorite ?? false;
+
   @override
   List<Object> get props => [
         status,
