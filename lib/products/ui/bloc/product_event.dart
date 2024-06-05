@@ -7,15 +7,15 @@ sealed class ProductsEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-final class ProductsRequested extends ProductsEvent {
-  final String? search;
+final class ProductsRequested extends ProductsEvent {}
 
-  const ProductsRequested({
-    this.search,
-  });
+final class ProductsRefreshRequested extends ProductsEvent {}
+
+final class ProductsSearchUpdated extends ProductsEvent {
+  final String search;
+
+  const ProductsSearchUpdated(this.search);
 
   @override
   List<Object?> get props => [search];
 }
-
-final class ProductsRefreshRequested extends ProductsEvent {}

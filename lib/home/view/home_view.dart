@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ylham_motors/app/app.dart';
 import 'package:ylham_motors/home/home.dart';
 import 'package:flutter/material.dart';
+import 'package:ylham_motors/products/products.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -13,11 +14,26 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Ylham motors"),
         actions: const [
-          AppContentSelectorAction(),
+          HomeSearchAction(),
+          // AppContentSelectorAction(),
           SizedBox(width: AppSpacing.md),
         ],
       ),
       body: const HomeContent(),
+    );
+  }
+}
+
+class HomeSearchAction extends StatelessWidget {
+  const HomeSearchAction({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        Navigator.of(context).push(ProductsPage.route());
+      },
+      icon: const Icon(Icons.search_rounded),
     );
   }
 }

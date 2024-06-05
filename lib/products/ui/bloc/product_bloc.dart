@@ -3,10 +3,15 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:data_provider/data_provider.dart';
 import 'package:equatable/equatable.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:ylham_motors/products/products.dart';
 
 part 'product_event.dart';
 part 'product_state.dart';
+
+EventTransformer<Event> debounceSequential<Event>(Duration duration) {
+  return (events, mapper) => events.debounceTime(duration).asyncExpand(mapper);
+}
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   ProductsBloc({
@@ -17,6 +22,10 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
         super(const ProductsState.initial()) {
     on<ProductsRequested>(_onProductsRequested);
     on<ProductsRefreshRequested>(_onProductsRefreshRequested);
+    on<ProductsSearchUpdated>(
+      _onSearchUpdated,
+      transformer: debounceSequential(const Duration(milliseconds: 500)),
+    );
   }
 
   final ProductRepository _productRepository;
@@ -38,7 +47,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
 
       final response = await _productRepository.getProducts(
         GetProductListQueryParameters(
-          search: event.search,
+          search: state.search,
           brandId: brand?.id,
           categoryId: category?.id,
           page: state.page + 1,
@@ -66,6 +75,16 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     Emitter<ProductsState> emit,
   ) {
     emit(const ProductsState.initial());
-    add(const ProductsRequested());
+    add(ProductsRequested());
+  }
+
+  FutureOr<void> _onSearchUpdated(
+    ProductsSearchUpdated event,
+    Emitter<ProductsState> emit,
+  ) {
+    emit(const ProductsState.initial().copyWith(
+      search: event.search,
+    ));
+    add(ProductsRequested());
   }
 }

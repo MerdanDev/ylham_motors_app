@@ -22,4 +22,9 @@ class CartClient {
 
     return CartResponse.fromJson(response.data!);
   }
+
+  Future<CartSummaryResponse> getCartSummary() async {
+    final response = await _http.get<Map<String, dynamic>>('/cart/summery');
+    return CartSummaryResponse.fromJson(response.data!);
+  }
 }

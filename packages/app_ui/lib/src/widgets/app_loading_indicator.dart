@@ -13,7 +13,7 @@ class AppLoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const indicator = CircularProgressIndicator();
+    const indicator = Center(child: CircularProgressIndicator());
 
     if (!isForeground) return indicator;
 

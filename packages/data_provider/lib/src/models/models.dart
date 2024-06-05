@@ -3,6 +3,7 @@ export 'auth_verify_request_body/auth_verify_request_body.dart';
 export 'brand_item/brand_item.dart';
 export 'brand_list_response/brand_list_response.dart';
 export 'cart/cart.dart';
+export 'cart_summary/cart_summary.dart';
 export 'cart_update_request_body/cart_update_request_body.dart';
 export 'category_item/category_item.dart';
 export 'category_list_response/category_list_response.dart';

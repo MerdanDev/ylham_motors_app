@@ -32,7 +32,7 @@ class ProductsPage extends StatelessWidget {
         productRepository: context.read<ProductRepository>(),
         category: category,
         brand: brand,
-      )..add(const ProductsRequested()),
+      )..add(ProductsRequested()),
       child: const ProductsView(),
     );
   }

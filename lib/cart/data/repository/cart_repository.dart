@@ -58,4 +58,12 @@ class CartRepository {
       Error.throwWithStackTrace(UpdateCartFailure(error), stackTrace);
     }
   }
+
+  Future<CartSummaryResponse> getCartSummary() async {
+    try {
+      return await _cartClient.getCartSummary();
+    } catch (error, stackTrace) {
+      Error.throwWithStackTrace(GetCartSummaryFailure(error), stackTrace);
+    }
+  }
 }
