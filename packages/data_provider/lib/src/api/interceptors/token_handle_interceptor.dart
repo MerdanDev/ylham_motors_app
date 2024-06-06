@@ -30,7 +30,9 @@ class TokenHandleInterceptor extends Interceptor {
     final token = await _tokenProvider();
 
     // Add authorization token to request
-    options.headers.addAll({'Authorization': 'Bearer $token'});
+    if (token != null) {
+      options.headers.addAll({'Authorization': 'Bearer $token'});
+    }
 
     // request
     return handler.next(options);

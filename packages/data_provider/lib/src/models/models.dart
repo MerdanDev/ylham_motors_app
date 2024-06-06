@@ -8,6 +8,7 @@ export 'cart_update_request_body/cart_update_request_body.dart';
 export 'category_item/category_item.dart';
 export 'category_list_response/category_list_response.dart';
 export 'login_request_body/login_request_body.dart';
+export 'order_create_request_body/order_create_request_body.dart';
 export 'product_item/product_item.dart';
 export 'product_list_response/product_list_response.dart';
 export 'profile/profile.dart';
