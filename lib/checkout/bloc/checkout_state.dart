@@ -6,6 +6,10 @@ enum CheckoutStatus {
   loading,
   success,
   failure,
+
+  completing,
+  completingSuccess,
+  completingFailure,
 }
 
 final class CheckoutState extends Equatable {

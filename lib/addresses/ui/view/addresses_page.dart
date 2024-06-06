@@ -1,15 +1,38 @@
+import 'package:data_provider/data_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:ylham_motors/addresses/addresses.dart';
 
-class AddressesPage extends StatelessWidget {
-  const AddressesPage({super.key});
+typedef AddressSelectCallback = void Function(AddressModel address);
 
-  static Route<void> route() => MaterialPageRoute<void>(builder: (_) => const AddressesPage());
+class AddressesPage extends StatelessWidget {
+  const AddressesPage({
+    this.onAddressSelected,
+    super.key,
+  });
+
+  final AddressSelectCallback? onAddressSelected;
+
+  static Route<void> route({
+    AddressSelectCallback? onAddressSelected,
+  }) =>
+      MaterialPageRoute<void>(
+        builder: (_) => AddressesPage(
+          onAddressSelected: onAddressSelected,
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
-    return const AddressesView();
+    return BlocListener<AddressBloc, AddressState>(
+      listenWhen: (previous, current) => previous.selectedAddress != current.selectedAddress,
+      listener: (context, state) {
+        if (state.selectedAddress == null) return;
+        onAddressSelected?.call(state.selectedAddress!);
+      },
+      child: const AddressesView(),
+    );
   }
 }
 

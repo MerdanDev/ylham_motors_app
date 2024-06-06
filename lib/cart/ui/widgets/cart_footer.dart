@@ -2,10 +2,14 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ylham_motors/cart/cart.dart';
-import 'package:ylham_motors/checkout/checkout.dart';
 
 class CartFooter extends StatelessWidget {
-  const CartFooter({super.key});
+  const CartFooter({
+    this.onSubmit,
+    super.key,
+  });
+
+  final VoidCallback? onSubmit;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +40,7 @@ class CartFooter extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: AppButton.label(
-              onPressed: () => Navigator.of(context).push(CheckoutPage.route()),
+              onPressed: onSubmit,
               label: 'Sargyt et (${cart?.quantity ?? 0})',
               buttonSize: AppButtonSize.large,
             ),

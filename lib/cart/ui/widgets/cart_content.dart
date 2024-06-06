@@ -2,6 +2,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ylham_motors/cart/cart.dart';
+import 'package:ylham_motors/checkout/checkout.dart';
 
 class CartContent extends StatelessWidget {
   const CartContent({super.key});
@@ -28,7 +29,10 @@ class CartContent extends StatelessWidget {
         ),
 
         /// FOOTER
-        if (!isCartEmpty) const CartFooter(),
+        if (!isCartEmpty)
+          CartFooter(
+            onSubmit: () => Navigator.of(context).push(CheckoutPage.route()),
+          ),
       ],
     );
   }

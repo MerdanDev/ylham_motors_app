@@ -23,7 +23,7 @@ class AddressesContent extends StatelessWidget {
 
             return AddressCard(
               address: address,
-              onPressed: () {},
+              onPressed: () => context.read<AddressBloc>().add(AddressSelected(address)),
               onEditPressed: () {
                 showModalBottomSheet(
                   context: context,

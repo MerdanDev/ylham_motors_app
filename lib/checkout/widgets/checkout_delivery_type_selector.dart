@@ -15,10 +15,7 @@ class CheckoutDeliveryTypeSelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         /// TITLE
-        Text(
-          'Eltip bermek usuly',
-          style: const AppTextStyle.text().lg().semiBold().withColor(Colors.grey.shade500),
-        ),
+        const CheckoutHeadline('Eltip bermek usuly'),
 
         const SizedBox(height: AppSpacing.md),
 

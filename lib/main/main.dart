@@ -11,6 +11,7 @@ import 'package:ylham_motors/cart/cart.dart';
 import 'package:ylham_motors/categories/categories.dart';
 import 'package:ylham_motors/main/bootstrap/bootstrap.dart';
 import 'package:data_provider/data_provider.dart';
+import 'package:ylham_motors/orders/orders.dart';
 import 'package:ylham_motors/products/products.dart';
 import 'package:ylham_motors/slider/slider.dart';
 
@@ -80,6 +81,10 @@ void main() {
     final cartClient = CartClient(httpClient: httpClient);
     final cartRepository = CartRepository(cartClient: cartClient);
 
+    /// Orders
+    final orderClient = OrderClient(httpClient: httpClient);
+    final orderRepository = OrderRepository(orderClient: orderClient);
+
     return App(
       exceptionStream: exceptionStream,
       sliderRepository: sliderRepository,
@@ -89,6 +94,7 @@ void main() {
       authRepository: authRepository,
       addressRepository: addressRepository,
       cartRepository: cartRepository,
+      orderRepository: orderRepository,
     );
   });
 }

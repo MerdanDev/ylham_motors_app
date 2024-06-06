@@ -15,10 +15,7 @@ class CheckoutPaymentMethodSelector extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         /// TITLE
-        Text(
-          'Toleg usuly',
-          style: const AppTextStyle.text().lg().semiBold().withColor(Colors.grey.shade500),
-        ),
+        const CheckoutHeadline('Toleg usuly'),
 
         const SizedBox(height: AppSpacing.md),
 

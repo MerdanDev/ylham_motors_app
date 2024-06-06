@@ -4,7 +4,7 @@ sealed class CheckoutEvent extends Equatable {
   const CheckoutEvent();
 
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [];
 }
 
 final class CheckoutRequested extends CheckoutEvent {}
@@ -25,4 +25,26 @@ final class CheckoutDeliveryTypeUpdated extends CheckoutEvent {
 
   @override
   List<Object> get props => [deliveryType];
+}
+
+final class CheckoutCompleteRequested extends CheckoutEvent {
+  final String username;
+  final String phone;
+  final String? notes;
+  final String address;
+
+  const CheckoutCompleteRequested({
+    required this.username,
+    required this.phone,
+    required this.notes,
+    required this.address,
+  });
+
+  @override
+  List<Object?> get props => [
+        username,
+        phone,
+        notes,
+        address,
+      ];
 }

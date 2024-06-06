@@ -17,6 +17,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:ylham_motors/navigation/navigation.dart';
+import 'package:ylham_motors/orders/data/order_repository.dart';
 import 'package:ylham_motors/products/data/repository/product_repository.dart';
 import 'package:ylham_motors/slider/data/repository/slider_repository.dart';
 
@@ -31,6 +32,7 @@ class App extends StatelessWidget {
     required AuthRepository authRepository,
     required AddressRepository addressRepository,
     required CartRepository cartRepository,
+    required OrderRepository orderRepository,
   })  : _exceptionStream = exceptionStream,
         _sliderRepository = sliderRepository,
         _categoryRepository = categoryRepository,
@@ -38,7 +40,8 @@ class App extends StatelessWidget {
         _brandRepository = brandRepository,
         _authRepository = authRepository,
         _addressRepository = addressRepository,
-        _cartRepository = cartRepository;
+        _cartRepository = cartRepository,
+        _orderRepository = orderRepository;
 
   // ignore: unused_field
   final StreamController<Exception> _exceptionStream;
@@ -49,6 +52,7 @@ class App extends StatelessWidget {
   final AuthRepository _authRepository;
   final AddressRepository _addressRepository;
   final CartRepository _cartRepository;
+  final OrderRepository _orderRepository;
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +89,7 @@ class App extends StatelessWidget {
         RepositoryProvider.value(value: _authRepository),
         RepositoryProvider.value(value: _addressRepository),
         RepositoryProvider.value(value: _cartRepository),
+        RepositoryProvider.value(value: _orderRepository),
       ],
       child: MultiBlocProvider(
         providers: [

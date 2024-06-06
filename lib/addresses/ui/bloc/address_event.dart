@@ -30,4 +30,9 @@ final class AddressDeleteRequested extends AddressBaseActionEvent {
   const AddressDeleteRequested(super.address);
 }
 
+final class AddressSelected extends AddressBaseActionEvent {
+  const AddressSelected(super.address);
+
+}
+
 final class AddressFlushRequested extends AddressEvent {}

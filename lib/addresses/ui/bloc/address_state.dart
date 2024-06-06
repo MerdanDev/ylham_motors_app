@@ -18,21 +18,29 @@ class AddressState extends Equatable {
   const AddressState({
     this.addresses = const [],
     this.status = AddressStatus.initial,
+    this.selectedAddress,
   });
 
   final AddressStatus status;
   final List<AddressModel> addresses;
+  final AddressModel? selectedAddress;
 
   @override
-  List<Object> get props => [status, addresses];
+  List<Object?> get props => [
+        status,
+        addresses,
+        selectedAddress,
+      ];
 
   AddressState copyWith({
     AddressStatus? status,
     List<AddressModel>? addresses,
+    AddressModel? selectedAddress,
   }) {
     return AddressState(
       status: status ?? this.status,
       addresses: addresses ?? this.addresses,
+      selectedAddress: selectedAddress ?? this.selectedAddress,
     );
   }
 }

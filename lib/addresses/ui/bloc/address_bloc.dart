@@ -18,6 +18,7 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
     on<AddressUpdateRequested>(_onUpdateRequested);
     on<AddressDeleteRequested>(_onDeleteRequested);
     on<AddressFlushRequested>(_onFlushRequested);
+    on<AddressSelected>(_onSelected);
   }
 
   final AddressRepository _addressRepository;
@@ -116,5 +117,12 @@ class AddressBloc extends Bloc<AddressEvent, AddressState> {
       emit(state.copyWith(status: AddressStatus.updatingFailure));
       addError(error, stackTrace);
     }
+  }
+
+  FutureOr<void> _onSelected(
+    AddressSelected event,
+    Emitter<AddressState> emit,
+  ) {
+    emit(state.copyWith(selectedAddress: event.address));
   }
 }
