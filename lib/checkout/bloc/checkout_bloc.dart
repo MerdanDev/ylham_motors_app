@@ -75,8 +75,8 @@ class CheckoutBloc extends Bloc<CheckoutEvent, CheckoutState> {
           fullName: event.username,
           phone: event.phone,
           note: event.notes,
-          dateDelivery: '1',
-          deliveryTime: '11:00-12:00',
+          // dateDelivery: '1',
+          // deliveryTime: '11:00-12:00',
         ),
       );
 

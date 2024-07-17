@@ -12,7 +12,8 @@
 
     "profile": "Profile",
     "profileEdit": "Edit Profile",
-    
+
+    "phoneNumber": "Phone number",
     "firstname": "First Name",
     "lastname": "Last Name",
     "email": "Email",
@@ -37,6 +38,9 @@
     "orders": "My Orders",
     "ordersEmptyTitle": "No Orders",
     "ordersEmptyDescription": "Your orders are displayed here",
+
+    "favoritesEmptyTitle": "Favorites are empty",
+    "favoritesEmptyDescription": "Favorites will be shown here",
 
     "productSize": "Size",
     "productColor": "Color",
@@ -90,5 +94,16 @@
     "clear": "Clear",
 
     "productsEmptyTitle": "No Products Found",
-    "productsEmptyDescription": "No products available at this time."
+    "productsEmptyDescription": "No products available at this time.",
+
+    "home": "Home",
+    "category": "Category",
+    "favorites": "Favorites",
+
+    "authenticationPage": "Authentication page",
+    "login": "Login",
+    "register": "Register",
+
+    "submit": "Submit",
+    "continueT": "Continue"
 }

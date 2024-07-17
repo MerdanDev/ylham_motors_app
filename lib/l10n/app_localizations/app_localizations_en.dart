@@ -29,6 +29,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profileEdit => 'Edit Profile';
 
   @override
+  String get phoneNumber => 'Phone number';
+
+  @override
   String get firstname => 'First Name';
 
   @override
@@ -80,10 +83,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ordersEmptyDescription => 'Your orders are displayed here';
 
   @override
-  String get favoritesEmptyTitle => 'Halanlarym ýok';
+  String get favoritesEmptyTitle => 'Favorites are empty';
 
   @override
-  String get favoritesEmptyDescription => 'Halanlaryňyzyň sanawy şu ýerde görkeziler';
+  String get favoritesEmptyDescription => 'Favorites will be shown here';
 
   @override
   String get productSize => 'Size';
@@ -192,4 +195,28 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get productsEmptyDescription => 'No products available at this time.';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get category => 'Category';
+
+  @override
+  String get favorites => 'Favorites';
+
+  @override
+  String get authenticationPage => 'Authentication page';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get submit => 'Submit';
+
+  @override
+  String get continueT => 'Continue';
 }

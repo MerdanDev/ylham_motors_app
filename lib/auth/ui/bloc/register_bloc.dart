@@ -23,7 +23,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   final AuthRepository _authRepository;
 
-  void _onEmailChanged(RegisterEmailChanged event, Emitter<RegisterState> emit) {
+  void _onEmailChanged(
+      RegisterEmailChanged event, Emitter<RegisterState> emit) {
     final email = Email.dirty(event.email);
     emit(
       state.copyWith(
@@ -33,7 +34,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     );
   }
 
-  void _onPhoneChanged(RegisterPhoneChanged event, Emitter<RegisterState> emit) {
+  void _onPhoneChanged(
+      RegisterPhoneChanged event, Emitter<RegisterState> emit) {
     final phone = Phone.dirty(event.phone);
 
     emit(
@@ -44,7 +46,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     );
   }
 
-  void _onUsernameChanged(RegisterUsernameChanged event, Emitter<RegisterState> emit) {
+  void _onUsernameChanged(
+      RegisterUsernameChanged event, Emitter<RegisterState> emit) {
     final username = Username.dirty(event.username);
 
     emit(
@@ -55,7 +58,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     );
   }
 
-  void _onSurnameChanged(RegisterSurnameChanged event, Emitter<RegisterState> emit) {
+  void _onSurnameChanged(
+      RegisterSurnameChanged event, Emitter<RegisterState> emit) {
     final surname = Surname.dirty(event.surname);
 
     emit(
@@ -75,12 +79,21 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     try {
       await _authRepository.register(
         RegisterRequestBody(
+          email: state.email.value,
+          name: state.username.value,
+          surname: state.surname.value,
           phone: state.phone.value,
         ),
       );
       emit(state.copyWith(status: FormzSubmissionStatus.success));
     } catch (error, stackTrace) {
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+      // if(error is DioError){
+      //    get message from error
+      // }
+      emit(state.copyWith(
+        status: FormzSubmissionStatus.failure,
+        message: error.toString(),
+      ));
       addError(error, stackTrace);
     }
   }

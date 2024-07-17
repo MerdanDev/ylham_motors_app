@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:ylham_motors/l10n/l10n.dart';
 
 class PhoneInput extends StatelessWidget {
   const PhoneInput({
@@ -23,12 +24,12 @@ class PhoneInput extends StatelessWidget {
       onChanged: onChanged,
       keyboardType: TextInputType.phone,
       validator: (_) => error,
-      decoration: const InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: "Telefon belgiňiz",
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        labelText: context.l10n.phoneNumber,
         hintText: "61234567",
         prefixText: "+993 ",
-        suffixIcon: PhosphorIcon(PhosphorIconsBold.phone),
+        suffixIcon: const PhosphorIcon(PhosphorIconsBold.phone),
         // errorText: error,
       ),
     );

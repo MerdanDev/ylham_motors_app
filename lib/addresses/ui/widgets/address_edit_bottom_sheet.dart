@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:ylham_motors/addresses/addresses.dart';
+import 'package:ylham_motors/l10n/l10n.dart';
 
 class AddressEditBottomSheet extends HookWidget {
   const AddressEditBottomSheet({
@@ -23,7 +24,8 @@ class AddressEditBottomSheet extends HookWidget {
       padding: const EdgeInsets.symmetric(
         horizontal: AppSpacing.lg,
         vertical: AppSpacing.xlg,
-      ).copyWith(bottom: MediaQuery.of(context).viewInsets.bottom + AppSpacing.lg),
+      ).copyWith(
+          bottom: MediaQuery.of(context).viewInsets.bottom + AppSpacing.lg),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -80,8 +82,9 @@ class AddressEditBottomSheet extends HookWidget {
                         ),
                       );
                 }
+                Navigator.pop(context);
               },
-              label: "Tassykla",
+              label: context.l10n.submit,
               buttonSize: AppButtonSize.large,
               buttonType: AppButtonType.primary,
             ),

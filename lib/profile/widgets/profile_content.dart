@@ -1,8 +1,10 @@
 import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:ylham_motors/addresses/addresses.dart';
 import 'package:ylham_motors/auth/auth.dart';
+import 'package:ylham_motors/l10n/l10n.dart';
 import 'package:ylham_motors/language/language.dart';
 
 class ProfileContent extends StatelessWidget {
@@ -20,20 +22,43 @@ class ProfileContent extends StatelessWidget {
         //   leading: const PhosphorIcon(PhosphorIconsBold.userCircle),
         // ),
 
-        // const SizedBox(height: AppSpacing.md),
-
-        /// Authentication
-        AppCard(
-          onPressed: () {
-            Navigator.of(context).push(AuthPage.route());
+        const SizedBox(height: AppSpacing.md),
+        BlocBuilder<AuthenticationBloc, AuthenticationState>(
+          builder: (context, state) {
+            if (state.status == AuthenticationStatus.success) {
+              return AppCard(
+                child: ListTile(
+                  leading: const Icon(Icons.person_rounded),
+                  title: Text('${state.user?.surname} ${state.user?.name}'),
+                  subtitle: Text('+993 ${state.user?.username}'),
+                  trailing: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.logout_rounded),
+                  ),
+                ),
+              );
+            } else if (state.status == AuthenticationStatus.loading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            } else {
+              /// Authentication
+              return AppCard(
+                onPressed: () {
+                  final l10n = context.l10n;
+                  Navigator.of(context).push(AuthPage.route());
+                },
+                padding: EdgeInsets.zero,
+                child: ListTile(
+                  leading: const PhosphorIcon(PhosphorIconsBold.userCircle),
+                  title: Text(context.l10n.login),
+                  // subtitle: Text(""),
+                  trailing:
+                      const PhosphorIcon(PhosphorIconsBold.caretCircleRight),
+                ),
+              );
+            }
           },
-          padding: EdgeInsets.zero,
-          child: const ListTile(
-            leading: PhosphorIcon(PhosphorIconsBold.userCircle),
-            title: Text("Agza bol"),
-            // subtitle: Text(""),
-            trailing: PhosphorIcon(PhosphorIconsBold.caretCircleRight),
-          ),
         ),
 
         const SizedBox(height: AppSpacing.md),
@@ -44,10 +69,10 @@ class ProfileContent extends StatelessWidget {
             Navigator.of(context).push(AddressesPage.route());
           },
           padding: EdgeInsets.zero,
-          child: const ListTile(
-            leading: PhosphorIcon(PhosphorIconsBold.mapPin),
-            title: Text("Salgylarym"),
-            trailing: PhosphorIcon(PhosphorIconsBold.caretCircleRight),
+          child: ListTile(
+            leading: const PhosphorIcon(PhosphorIconsBold.mapPin),
+            title: Text(context.l10n.addresses),
+            trailing: const PhosphorIcon(PhosphorIconsBold.caretCircleRight),
           ),
         ),
 
@@ -59,10 +84,10 @@ class ProfileContent extends StatelessWidget {
             showLanguageSelectBottomSheet(context: context);
           },
           padding: EdgeInsets.zero,
-          child: const ListTile(
-            leading: PhosphorIcon(PhosphorIconsBold.translate),
-            title: Text("Dil"),
-            trailing: PhosphorIcon(PhosphorIconsBold.caretCircleRight),
+          child: ListTile(
+            leading: const PhosphorIcon(PhosphorIconsBold.translate),
+            title: Text(context.l10n.language),
+            trailing: const PhosphorIcon(PhosphorIconsBold.caretCircleRight),
           ),
         ),
       ],

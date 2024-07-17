@@ -21,7 +21,8 @@ class RegisterContent extends StatelessWidget {
 
             return PhoneInput(
               readOnly: readOnly,
-              onChanged: (phone) => context.read<RegisterBloc>().add(RegisterPhoneChanged(phone)),
+              onChanged: (phone) =>
+                  context.read<RegisterBloc>().add(RegisterPhoneChanged(phone)),
             );
           },
         ),
@@ -35,7 +36,9 @@ class RegisterContent extends StatelessWidget {
 
             return UsernameInput(
               readOnly: readOnly,
-              onChanged: (username) => context.read<RegisterBloc>().add(RegisterUsernameChanged(username)),
+              onChanged: (username) => context
+                  .read<RegisterBloc>()
+                  .add(RegisterUsernameChanged(username)),
             );
           },
         ),
@@ -49,7 +52,9 @@ class RegisterContent extends StatelessWidget {
 
             return SurnameInput(
               readOnly: readOnly,
-              onChanged: (surname) => context.read<RegisterBloc>().add(RegisterSurnameChanged(surname)),
+              onChanged: (surname) => context
+                  .read<RegisterBloc>()
+                  .add(RegisterSurnameChanged(surname)),
             );
           },
         ),
@@ -63,7 +68,8 @@ class RegisterContent extends StatelessWidget {
 
             return EmailInput(
               readOnly: readOnly,
-              onChanged: (email) => context.read<RegisterBloc>().add(RegisterEmailChanged(email)),
+              onChanged: (email) =>
+                  context.read<RegisterBloc>().add(RegisterEmailChanged(email)),
             );
           },
         ),
@@ -72,7 +78,8 @@ class RegisterContent extends StatelessWidget {
 
         /// Next button
         NextButton(
-          onPressed: () => context.read<RegisterBloc>().add(const RegisterEmailChanged('')),
+          onPressed: () =>
+              context.read<RegisterBloc>().add(RegisterSubmitted()),
         ),
       ],
     );

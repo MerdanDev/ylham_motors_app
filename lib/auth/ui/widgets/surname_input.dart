@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:ylham_motors/l10n/l10n.dart';
 
 class SurnameInput extends StatelessWidget {
   const SurnameInput({
@@ -19,10 +20,10 @@ class SurnameInput extends StatelessWidget {
       initialValue: initialValue,
       readOnly: readOnly,
       onChanged: onChanged,
-      decoration: const InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: "Surname",
-        suffixIcon: PhosphorIcon(PhosphorIconsBold.user),
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        labelText: context.l10n.lastname,
+        suffixIcon: const PhosphorIcon(PhosphorIconsBold.user),
       ),
     );
   }

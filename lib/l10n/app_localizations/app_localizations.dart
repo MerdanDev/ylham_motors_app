@@ -143,6 +143,12 @@ abstract class AppLocalizations {
   /// **'Profili sazlamak'**
   String get profileEdit;
 
+  /// No description provided for @phoneNumber.
+  ///
+  /// In tk, this message translates to:
+  /// **'Telefon nomeri'**
+  String get phoneNumber;
+
   /// No description provided for @firstname.
   ///
   /// In tk, this message translates to:
@@ -472,6 +478,54 @@ abstract class AppLocalizations {
   /// In tk, this message translates to:
   /// **'Häzirki wagtda harytlar ýok.'**
   String get productsEmptyDescription;
+
+  /// No description provided for @home.
+  ///
+  /// In tk, this message translates to:
+  /// **'Baş sahypa'**
+  String get home;
+
+  /// No description provided for @category.
+  ///
+  /// In tk, this message translates to:
+  /// **'Kategoriýa'**
+  String get category;
+
+  /// No description provided for @favorites.
+  ///
+  /// In tk, this message translates to:
+  /// **'Halanlarym'**
+  String get favorites;
+
+  /// No description provided for @authenticationPage.
+  ///
+  /// In tk, this message translates to:
+  /// **'Agza bolmak sahypasy'**
+  String get authenticationPage;
+
+  /// No description provided for @login.
+  ///
+  /// In tk, this message translates to:
+  /// **'Agza bolmak'**
+  String get login;
+
+  /// No description provided for @register.
+  ///
+  /// In tk, this message translates to:
+  /// **'Hasap döretmek'**
+  String get register;
+
+  /// No description provided for @submit.
+  ///
+  /// In tk, this message translates to:
+  /// **'Tassykla'**
+  String get submit;
+
+  /// No description provided for @continueT.
+  ///
+  /// In tk, this message translates to:
+  /// **'Dowam et'**
+  String get continueT;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

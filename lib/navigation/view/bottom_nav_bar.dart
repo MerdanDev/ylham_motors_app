@@ -7,6 +7,7 @@ import 'package:ylham_motors/cart/cart.dart';
 import 'package:ylham_motors/categories/categories.dart';
 import 'package:ylham_motors/favorites/favorites.dart';
 import 'package:ylham_motors/home/home.dart';
+import 'package:ylham_motors/l10n/l10n.dart';
 import 'package:ylham_motors/profile/profile.dart';
 
 enum BottomNavigationBarItemType {
@@ -20,7 +21,8 @@ enum BottomNavigationBarItemType {
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
 
-  static Route<void> route() => MaterialPageRoute<void>(builder: (_) => const BottomNavBar());
+  static Route<void> route() =>
+      MaterialPageRoute<void>(builder: (_) => const BottomNavBar());
 
   Map<BottomNavigationBarItemType, Widget> get pages => {
         BottomNavigationBarItemType.home: const HomePage(),
@@ -28,34 +30,6 @@ class BottomNavBar extends StatelessWidget {
         BottomNavigationBarItemType.cart: const CartPage(),
         BottomNavigationBarItemType.favorites: const FavoritesPage(),
         BottomNavigationBarItemType.profile: const ProfilePage(),
-      };
-
-  Map<BottomNavigationBarItemType, BottomNavigationBarItem> get items => {
-        BottomNavigationBarItemType.home: const BottomNavigationBarItem(
-          activeIcon: Icon(Icons.home_rounded),
-          icon: Icon(Icons.home_outlined),
-          label: 'Baş sahypa',
-        ),
-        BottomNavigationBarItemType.category: const BottomNavigationBarItem(
-          activeIcon: Icon(Icons.category_rounded),
-          icon: Icon(Icons.category_outlined),
-          label: 'Kategoriýa',
-        ),
-        BottomNavigationBarItemType.cart: const BottomNavigationBarItem(
-          activeIcon: CartQuantityBadge(child: Icon(Icons.shopping_cart_rounded)),
-          icon: CartQuantityBadge(child: Icon(Icons.shopping_cart_outlined)),
-          label: 'Sebet',
-        ),
-        BottomNavigationBarItemType.favorites: const BottomNavigationBarItem(
-          activeIcon: Icon(Icons.favorite_rounded),
-          icon: Icon(Icons.favorite_border_rounded),
-          label: 'Halanlarym',
-        ),
-        BottomNavigationBarItemType.profile: const BottomNavigationBarItem(
-          activeIcon: Icon(Icons.person_rounded),
-          icon: Icon(Icons.person_outlined),
-          label: 'Profil',
-        ),
       };
 
   static final itemOrder = [
@@ -68,7 +42,38 @@ class BottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentType = context.select((AppCubit cubit) => cubit.state.currentBottomNavigationBarType);
+    final currentType = context
+        .select((AppCubit cubit) => cubit.state.currentBottomNavigationBarType);
+
+    Map<BottomNavigationBarItemType, BottomNavigationBarItem> items = {
+      BottomNavigationBarItemType.home: BottomNavigationBarItem(
+        activeIcon: const Icon(Icons.home_rounded),
+        icon: const Icon(Icons.home_outlined),
+        label: context.l10n.home,
+      ),
+      BottomNavigationBarItemType.category: BottomNavigationBarItem(
+        activeIcon: const Icon(Icons.category_rounded),
+        icon: const Icon(Icons.category_outlined),
+        label: context.l10n.category,
+      ),
+      BottomNavigationBarItemType.cart: BottomNavigationBarItem(
+        activeIcon:
+            const CartQuantityBadge(child: Icon(Icons.shopping_cart_rounded)),
+        icon:
+            const CartQuantityBadge(child: Icon(Icons.shopping_cart_outlined)),
+        label: context.l10n.cart,
+      ),
+      BottomNavigationBarItemType.favorites: BottomNavigationBarItem(
+        activeIcon: const Icon(Icons.favorite_rounded),
+        icon: const Icon(Icons.favorite_border_rounded),
+        label: context.l10n.favorites,
+      ),
+      BottomNavigationBarItemType.profile: BottomNavigationBarItem(
+        activeIcon: const Icon(Icons.person_rounded),
+        icon: const Icon(Icons.person_outlined),
+        label: context.l10n.profile,
+      ),
+    };
 
     return Scaffold(
       body: pages[currentType],
@@ -83,7 +88,8 @@ class BottomNavBar extends StatelessWidget {
 
           context.read<AppCubit>().updateAppBottomNavigationBarItemType(item);
         },
-        items: itemOrder.map<BottomNavigationBarItem>((e) => items[e]!).toList(),
+        items:
+            itemOrder.map<BottomNavigationBarItem>((e) => items[e]!).toList(),
       ),
     );
   }

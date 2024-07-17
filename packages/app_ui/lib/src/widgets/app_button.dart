@@ -199,9 +199,12 @@ class AppButton extends StatelessWidget {
 
   /// Get normal button padding
   EdgeInsets get padding => switch (_buttonSize) {
-        AppButtonSize.small => const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
-        AppButtonSize.medium => const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-        AppButtonSize.large => const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+        AppButtonSize.small =>
+          const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+        AppButtonSize.medium =>
+          const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        AppButtonSize.large =>
+          const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
       };
 
   /// Get icon button padding
@@ -262,13 +265,16 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = _textStyle ?? this.textStyle;
 
-    EdgeInsets? padding = _padding ?? (_iconOnly ? iconButtonPadding : this.padding);
+    EdgeInsets? padding =
+        _padding ?? (_iconOnly ? iconButtonPadding : this.padding);
     final borderRadius = _borderRadius ?? _defaultBorderRadius;
 
     final buttonColor = _buttonColor ?? this.buttonColor;
-    final disabledButtonColor = _disabledButtonColor ?? this.disabledButtonColor;
+    final disabledButtonColor =
+        _disabledButtonColor ?? this.disabledButtonColor;
     final foregroundColor = _foregroundColor ?? this.foregroundColor;
-    final disabledForegroundColor = _disabledForegroundColor ?? this.disabledForegroundColor;
+    final disabledForegroundColor =
+        _disabledForegroundColor ?? this.disabledForegroundColor;
 
     late Widget child;
 
@@ -313,15 +319,16 @@ class AppButton extends StatelessWidget {
     }
 
     final style = ButtonStyle(
-      padding: WidgetStateProperty.all(padding),
-      textStyle: WidgetStateProperty.all(textStyle),
-      backgroundColor:
-          onPressed == null ? WidgetStateProperty.all(disabledButtonColor) : WidgetStateProperty.all(buttonColor),
-      elevation: WidgetStateProperty.all(_elevation),
+      padding: MaterialStateProperty.all(padding),
+      textStyle: MaterialStateProperty.all(textStyle),
+      backgroundColor: onPressed == null
+          ? MaterialStateProperty.all(disabledButtonColor)
+          : MaterialStateProperty.all(buttonColor),
+      elevation: MaterialStateProperty.all(_elevation),
       foregroundColor: onPressed == null
-          ? WidgetStateProperty.all(disabledForegroundColor)
-          : WidgetStateProperty.all(foregroundColor),
-      shape: WidgetStateProperty.all(
+          ? MaterialStateProperty.all(disabledForegroundColor)
+          : MaterialStateProperty.all(foregroundColor),
+      shape: MaterialStateProperty.all(
         _iconOnly
             ? RoundedRectangleBorder(
                 borderRadius: borderRadius,
@@ -330,7 +337,7 @@ class AppButton extends StatelessWidget {
                 borderRadius: borderRadius,
               ),
       ),
-      minimumSize: !_iconOnly ? null : WidgetStateProperty.all(Size.zero),
+      minimumSize: !_iconOnly ? null : MaterialStateProperty.all(Size.zero),
       tapTargetSize: !_iconOnly ? null : MaterialTapTargetSize.shrinkWrap,
     );
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:form_inputs/form_inputs.dart';
 import 'package:ylham_motors/auth/auth.dart';
 
 class RegisterView extends StatelessWidget {
@@ -11,7 +12,22 @@ class RegisterView extends StatelessWidget {
       create: (context) => RegisterBloc(
         authRepository: context.read<AuthRepository>(),
       ),
-      child: const RegisterContent(),
+      child: BlocListener<RegisterBloc, RegisterState>(
+        listenWhen: (previous, current) => previous.status != current.status,
+        listener: (context, state) {
+          if (state.status == FormzSubmissionStatus.success) {
+            Navigator.of(context)
+                .push(OtpVerifyPage.route(phone: state.phone.value));
+          } else if (state.status == FormzSubmissionStatus.failure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.message),
+              ),
+            );
+          }
+        },
+        child: const RegisterContent(),
+      ),
     );
   }
 }

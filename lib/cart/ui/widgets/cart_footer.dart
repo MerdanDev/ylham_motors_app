@@ -2,6 +2,7 @@ import 'package:app_ui/app_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ylham_motors/cart/cart.dart';
+import 'package:ylham_motors/l10n/l10n.dart';
 
 class CartFooter extends StatelessWidget {
   const CartFooter({
@@ -17,7 +18,8 @@ class CartFooter extends StatelessWidget {
 
     return AppCard(
       color: AppColors.grey.shade100,
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(AppSpacing.sm)),
+      borderRadius:
+          const BorderRadius.vertical(top: Radius.circular(AppSpacing.sm)),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +34,10 @@ class CartFooter extends StatelessWidget {
               ),
               Text(
                 cart?.totalPrice ?? '',
-                style: const AppTextStyle.text().md().bold().withColor(AppColors.primary),
+                style: const AppTextStyle.text()
+                    .md()
+                    .bold()
+                    .withColor(AppColors.primary),
               ),
             ],
           ),
@@ -41,7 +46,7 @@ class CartFooter extends StatelessWidget {
             width: double.infinity,
             child: AppButton.label(
               onPressed: onSubmit,
-              label: 'Sargyt et (${cart?.quantity ?? 0})',
+              label: '${context.l10n.placeAnOrder} (${cart?.quantity ?? 0})',
               buttonSize: AppButtonSize.large,
             ),
           ),

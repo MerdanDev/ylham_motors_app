@@ -46,8 +46,8 @@ class AppTheme {
       onSecondary: Colors.white,
       error: Colors.red,
       onError: Colors.white,
-      // background: Color(0xFFFAFAFA),
-      // onBackground: Colors.black,
+      background: Color(0xFFFAFAFA),
+      onBackground: Colors.black,
       surface: Colors.white,
       onSurface: Colors.black,
       tertiary: AppColors.tertiary,
@@ -93,7 +93,10 @@ class AppTheme {
   AppBarTheme get _appBarTheme {
     return AppBarTheme(
       iconTheme: _iconTheme.copyWith(color: AppColors.white),
-      titleTextStyle: const AppTextStyle.display().xs().semiBold().copyWith(letterSpacing: 1, fontFamily: 'Ubuntu'),
+      titleTextStyle: const AppTextStyle.display()
+          .xs()
+          .semiBold()
+          .copyWith(letterSpacing: 1, fontFamily: 'Ubuntu'),
       elevation: 1,
       toolbarHeight: 64,
       backgroundColor: AppColors.primary,
@@ -116,8 +119,12 @@ class AppTheme {
       type: BottomNavigationBarType.fixed,
       selectedItemColor: AppColors.primary,
       unselectedItemColor: AppColors.secondaryGray,
-      selectedLabelStyle: const AppTextStyle.text().medium().copyWith(color: AppColors.primary, fontSize: 11),
-      unselectedLabelStyle: const AppTextStyle.text().regular().copyWith(color: AppColors.secondaryGray, fontSize: 10),
+      selectedLabelStyle: const AppTextStyle.text()
+          .medium()
+          .copyWith(color: AppColors.primary, fontSize: 11),
+      unselectedLabelStyle: const AppTextStyle.text()
+          .regular()
+          .copyWith(color: AppColors.secondaryGray, fontSize: 10),
     );
   }
 
@@ -182,12 +189,17 @@ class AppTheme {
       prefixIconColor: AppColors.primary,
       hoverColor: AppColors.primary.shade100.withOpacity(0.5),
       focusColor: AppColors.primary.shade100.withOpacity(0.2),
-      labelStyle: const AppTextStyle.text().sm().withColor(AppColors.primary.shade500),
+      labelStyle:
+          const AppTextStyle.text().sm().withColor(AppColors.primary.shade500),
       contentPadding: const EdgeInsets.all(AppSpacing.lg),
       border: const OutlineInputBorder(),
       outlineBorder: const BorderSide(color: AppColors.primary),
-      enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: AppColors.primary)),
-      focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: AppColors.primary, width: 2)),
+      enabledBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.primary),
+      ),
+      focusedBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.primary, width: 2),
+      ),
       filled: true,
       isDense: true,
     );

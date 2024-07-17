@@ -8,6 +8,7 @@ final class RegisterState extends Equatable {
     this.username = const Username.pure(),
     this.surname = const Surname.pure(),
     this.status = FormzSubmissionStatus.initial,
+    this.message = '',
     this.valid = false,
   });
 
@@ -15,6 +16,7 @@ final class RegisterState extends Equatable {
   final Phone phone;
   final Username username;
   final Surname surname;
+  final String message;
 
   final FormzSubmissionStatus status;
   final bool valid;
@@ -26,6 +28,7 @@ final class RegisterState extends Equatable {
         username,
         surname,
         status,
+        message,
         valid,
       ];
 
@@ -35,6 +38,7 @@ final class RegisterState extends Equatable {
     Username? username,
     Surname? surname,
     FormzSubmissionStatus? status,
+    String? message,
     bool? valid,
   }) {
     return RegisterState(
@@ -43,6 +47,7 @@ final class RegisterState extends Equatable {
       username: username ?? this.username,
       surname: surname ?? this.surname,
       status: status ?? this.status,
+      message: message ?? this.message,
       valid: valid ?? this.valid,
     );
   }

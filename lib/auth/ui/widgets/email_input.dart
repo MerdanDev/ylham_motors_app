@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ylham_motors/l10n/l10n.dart';
 
 class EmailInput extends StatelessWidget {
   const EmailInput({
@@ -19,10 +20,10 @@ class EmailInput extends StatelessWidget {
       readOnly: readOnly,
       onChanged: onChanged,
       keyboardType: TextInputType.emailAddress,
-      decoration: const InputDecoration(
-        border: OutlineInputBorder(),
-        labelText: "Email",
-        suffixIcon: Icon(Icons.email_outlined),
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(),
+        labelText: context.l10n.email,
+        suffixIcon: const Icon(Icons.email_outlined),
       ),
     );
   }

@@ -16,7 +16,14 @@ class LoginView extends StatelessWidget {
         listenWhen: (previous, current) => previous.status != current.status,
         listener: (context, state) {
           if (state.status == FormzSubmissionStatus.success) {
-            Navigator.of(context).push(OtpVerifyPage.route(phone: state.phone.value));
+            Navigator.of(context)
+                .push(OtpVerifyPage.route(phone: state.phone.value));
+          } else if (state.status == FormzSubmissionStatus.failure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text('Some problem occurred'),
+              ),
+            );
           }
         },
         child: const LoginContent(),

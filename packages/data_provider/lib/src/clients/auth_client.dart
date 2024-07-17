@@ -1,5 +1,7 @@
 // ignore_for_file: public_member_api_docs
 
+import 'dart:convert';
+
 import 'package:data_provider/data_provider.dart';
 
 class AuthClient {
@@ -13,9 +15,10 @@ class AuthClient {
   final TokenStorage _tokenStorage;
 
   Future<dynamic> register(RegisterRequestBody body) async {
+    final requestData = jsonEncode(body.toJson());
     final response = await _http.post<Map<String, dynamic>>(
       '/register',
-      data: body.toJson(),
+      data: requestData,
     );
 
     return response;
@@ -44,7 +47,7 @@ class AuthClient {
   }
 
   Future<User> getMe() async {
-    final response = await _http.post<Map<String, dynamic>>('/user');
+    final response = await _http.get<Map<String, dynamic>>('/user');
     return User.fromJson(response.data!);
   }
 }

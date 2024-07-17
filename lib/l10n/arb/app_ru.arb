@@ -12,7 +12,8 @@
 
     "profile": "Профиль",
     "profileEdit": "Редактировать профиль",
-    
+
+    "phoneNumber": "Номер телефона",
     "firstname": "Имя",
     "lastname": "Фамилия",
     "email": "Электронная почта",
@@ -37,6 +38,9 @@
     "orders": "Мои заказы",
     "ordersEmptyTitle": "Заказов нет",
     "ordersEmptyDescription": "Здесь отображаются ваши заказы",
+
+    "favoritesEmptyTitle": "Избранное пусто",
+    "favoritesEmptyDescription": "Здесь будут показаны избранные",
 
     "productSize": "Размер",
     "productColor": "Цвет",
@@ -90,5 +94,16 @@
     "clear": "Очистить",
 
     "productsEmptyTitle": "Товары не найдены",
-    "productsEmptyDescription": "В настоящее время товары отсутствуют."
+    "productsEmptyDescription": "В настоящее время товары отсутствуют.",
+
+    "home": "Главная",
+    "category": "Категория",
+    "favorites": "Избранное",
+
+    "authenticationPage": "Страница аутентификации",
+    "login": "Войти",
+    "register": "Зарегистрироваться",
+
+    "submit": "Отправить",
+    "continueT": "Продолжать"
 }

@@ -15,8 +15,8 @@ OrderCreateRequestBody _$OrderCreateRequestBodyFromJson(
       note: json['note'] as String?,
       paymentMethod: json['payment_method'] as String?,
       deliveryType: json['delivery_type'] as String?,
-      dateDelivery: json['date_delivery'] as String? ?? '1',
-      deliveryTime: json['delivery_time'] as String? ?? '11:00-12:00',
+      // dateDelivery: json['date_delivery'] as String? ?? '1',
+      // deliveryTime: json['delivery_time'] as String? ?? '11:00-12:00',
     );
 
 Map<String, dynamic> _$OrderCreateRequestBodyToJson(
@@ -28,6 +28,6 @@ Map<String, dynamic> _$OrderCreateRequestBodyToJson(
       'note': instance.note,
       'payment_method': instance.paymentMethod,
       'delivery_type': instance.deliveryType,
-      'date_delivery': instance.dateDelivery,
-      'delivery_time': instance.deliveryTime,
+      // 'date_delivery': instance.dateDelivery,
+      // 'delivery_time': instance.deliveryTime,
     };

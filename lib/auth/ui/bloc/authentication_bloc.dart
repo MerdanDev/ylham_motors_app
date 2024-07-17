@@ -8,13 +8,15 @@ import 'package:ylham_motors/auth/auth.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
-class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
+class AuthenticationBloc
+    extends Bloc<AuthenticationEvent, AuthenticationState> {
   AuthenticationBloc({
     required AuthRepository authRepository,
   })  : _authRepository = authRepository,
         super(const AuthenticationState.initial()) {
     on<AuthenticationVerifyRequested>(_onVerifyRequested);
     on<AuthenticationUserRequested>(_onUserRequested);
+    add(AuthenticationUserRequested());
   }
 
   final AuthRepository _authRepository;

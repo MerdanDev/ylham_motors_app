@@ -12,7 +12,8 @@
 
     "profile": "Profil",
     "profileEdit": "Profili sazlamak",
-    
+
+    "phoneNumber": "Telefon nomeri",
     "firstname": "Ady",
     "lastname": "Familiýasy",
     "email": "Elektron poçtasy",
@@ -93,5 +94,16 @@
     "clear": "Pozmak",
 
     "productsEmptyTitle": "Harytlar Tapylmady",
-    "productsEmptyDescription": "Häzirki wagtda harytlar ýok."
+    "productsEmptyDescription": "Häzirki wagtda harytlar ýok.",
+
+    "home": "Baş sahypa",
+    "category": "Kategoriýa",
+    "favorites": "Halanlarym",
+
+    "authenticationPage": "Agza bolmak sahypasy",
+    "login": "Agza bolmak",
+    "register": "Hasap döretmek",
+
+    "submit": "Tassykla",
+    "continueT": "Dowam et"
 }

@@ -29,7 +29,8 @@ class CheckoutView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<CheckoutBloc, CheckoutState>(
-      listenWhen: (previous, current) => current.status == CheckoutStatus.completingSuccess,
+      listenWhen: (previous, current) =>
+          current.status == CheckoutStatus.completingSuccess,
       listener: (context, state) {
         ScaffoldMessenger.of(context)
           ..clearSnackBars()
@@ -38,6 +39,7 @@ class CheckoutView extends StatelessWidget {
               content: Text('Order created successfully!'),
             ),
           );
+        Navigator.pop(context);
         // TODO: navigate to orders
       },
       child: Scaffold(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ylham_motors/favorites/favorites.dart';
+import 'package:ylham_motors/l10n/l10n.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({super.key});
@@ -21,7 +22,7 @@ class FavoritesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorites'),
+        title: Text(context.l10n.favorites),
       ),
       body: const FavoritesContent(),
     );

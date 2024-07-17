@@ -1,5 +1,8 @@
 import 'dart:async';
 
+import 'package:app_ui/app_ui.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:turkmen_localization_support/turkmen_localization_support.dart';
@@ -13,9 +16,6 @@ import 'package:ylham_motors/favorites/favorites.dart';
 import 'package:ylham_motors/home/home.dart';
 import 'package:ylham_motors/l10n/l10n.dart';
 import 'package:ylham_motors/language/language.dart';
-import 'package:app_ui/app_ui.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:ylham_motors/navigation/navigation.dart';
 import 'package:ylham_motors/orders/data/order_repository.dart';
 import 'package:ylham_motors/products/data/repository/product_repository.dart';
@@ -70,15 +70,20 @@ class App extends StatelessWidget {
       categoryRepository: _categoryRepository,
     )..add(const CategoriesRequested());
 
-    final brandsBloc = BrandsBloc(brandRepository: _brandRepository)..add(BrandsRequested());
+    final brandsBloc = BrandsBloc(brandRepository: _brandRepository)
+      ..add(BrandsRequested());
 
-    final addressBloc = AddressBloc(addressRepository: _addressRepository)..add(AddressesRequested());
+    final addressBloc = AddressBloc(addressRepository: _addressRepository)
+      ..add(AddressesRequested());
 
-    final cartBloc = CartBloc(cartRepository: _cartRepository)..add(CartInitRequested());
+    final cartBloc = CartBloc(cartRepository: _cartRepository)
+      ..add(CartInitRequested());
 
-    final favoritesBloc = FavoritesBloc(productRepository: _productRepository)..add(FavoritesInitRequested());
+    final favoritesBloc = FavoritesBloc(productRepository: _productRepository)
+      ..add(FavoritesInitRequested());
 
-    final authenticationBloc = AuthenticationBloc(authRepository: _authRepository);
+    final authenticationBloc =
+        AuthenticationBloc(authRepository: _authRepository);
 
     return MultiRepositoryProvider(
       providers: [
@@ -148,6 +153,37 @@ class _AppViewState extends State<AppView> {
       ],
       supportedLocales: AppLocalizations.supportedLocales,
       home: const BottomNavBar(),
+      builder: (context, child) {
+        return LocalizationOverride(
+          builder: (context) {
+            return child ?? const SizedBox.shrink();
+          },
+        );
+      },
+    );
+  }
+}
+
+class LocalizationOverride extends StatelessWidget {
+  const LocalizationOverride({required this.builder, super.key});
+  final Widget Function(BuildContext) builder;
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LanguageBloc, Locale>(
+      bloc: context.watch<LanguageBloc>(),
+      builder: (_, locale) {
+        return Localizations.override(
+          context: context,
+          locale: locale,
+          delegates: const [
+            ...AppLocalizations.localizationsDelegates,
+            ...TkDelegates.delegates,
+          ],
+          child: Builder(
+            builder: builder,
+          ),
+        );
+      },
     );
   }
 }

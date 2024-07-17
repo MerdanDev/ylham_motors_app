@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:data_provider/data_provider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:secure_storage/secure_storage.dart';
@@ -10,7 +11,6 @@ import 'package:ylham_motors/brands/brands.dart';
 import 'package:ylham_motors/cart/cart.dart';
 import 'package:ylham_motors/categories/categories.dart';
 import 'package:ylham_motors/main/bootstrap/bootstrap.dart';
-import 'package:data_provider/data_provider.dart';
 import 'package:ylham_motors/orders/orders.dart';
 import 'package:ylham_motors/products/products.dart';
 import 'package:ylham_motors/slider/slider.dart';
@@ -30,10 +30,11 @@ void main() {
     const secureStorage = FlutterSecureStorage();
     final tokenStorage = SecureTokenStorage(secureStorage: secureStorage);
 
+    // final token = await tokenStorage.readToken();
     if (kDebugMode) {
-      // tokenStorage.saveToken('55|Hh9SkgxCemrqWabOCPQ9iBJTUGuExBqANNBjEyTs');
       tokenStorage.clearToken();
-      tokenStorage.saveToken('58|KuJIYk7d9pJjsKKwdG5JUFySFqBepeNo3PxDmZPF');
+      tokenStorage.saveToken('63|jOy8lcSo7RmsFOp0K5MO6M5GXovEFyWPFQLtoTL2');
+      // tokenStorage.saveToken('58|KuJIYk7d9pJjsKKwdG5JUFySFqBepeNo3PxDmZPF');
     }
     // const secureoStorage = SecureStorage();
 
@@ -58,7 +59,8 @@ void main() {
 
     /// Categories
     final categoryClient = CategoryClient(httpClient: httpClient);
-    final categoryRepository = CategoryRepository(categoryClient: categoryClient);
+    final categoryRepository =
+        CategoryRepository(categoryClient: categoryClient);
 
     /// Brands
     final brandClient = BrandClient(httpClient: httpClient);
@@ -69,12 +71,14 @@ void main() {
     final productRepository = ProductRepository(productClient: productClient);
 
     /// Auth
-    final authClient = AuthClient(httpClient: httpClient, tokenStorage: tokenStorage);
+    final authClient =
+        AuthClient(httpClient: httpClient, tokenStorage: tokenStorage);
     final authRepository = AuthRepository(authClient: authClient);
 
     /// Addresses
     Hive.registerAdapter(AddressModelAdapter());
-    final userAddressBox = await Hive.openBox<AddressModel>(HiveBoxKeys.userAddresses);
+    final userAddressBox =
+        await Hive.openBox<AddressModel>(HiveBoxKeys.userAddresses);
     final addressRepository = AddressRepository(userAddressBox: userAddressBox);
 
     /// Cart

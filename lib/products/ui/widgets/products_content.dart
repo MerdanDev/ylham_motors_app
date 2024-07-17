@@ -47,7 +47,8 @@ class ProductsContent extends StatelessWidget {
             ProductGridView(
               products: products,
               hasMoreContent: hasMoreContent,
-              onLoadMore: () => context.read<ProductsBloc>().add(ProductsRequested()),
+              onLoadMore: () =>
+                  context.read<ProductsBloc>().add(ProductsRequested()),
             )
           ],
         ),
@@ -69,7 +70,7 @@ class ProductSearchField extends HookWidget {
     final isSearchEmpty = useState(true);
     final controller = useSearchController();
 
-    final shape = WidgetStatePropertyAll(
+    final shape = MaterialStatePropertyAll(
       RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(AppSpacing.sm),
       ),
@@ -84,10 +85,12 @@ class ProductSearchField extends HookWidget {
           builder: (BuildContext context, SearchController controller) {
             return SearchBar(
               controller: controller,
-              backgroundColor: WidgetStatePropertyAll(AppColors.primary.shade100),
-              elevation: const WidgetStatePropertyAll(0),
+              backgroundColor:
+                  MaterialStatePropertyAll(AppColors.primary.shade100),
+              elevation: const MaterialStatePropertyAll(0),
               shape: shape,
-              padding: const WidgetStatePropertyAll<EdgeInsets>(EdgeInsets.symmetric(horizontal: 16.0)),
+              padding: const MaterialStatePropertyAll<EdgeInsets>(
+                  EdgeInsets.symmetric(horizontal: 16.0)),
               onTap: () {
                 // controller.openView();
               },
@@ -104,7 +107,9 @@ class ProductSearchField extends HookWidget {
                     child: IconButton(
                       onPressed: () {
                         controller.clear();
-                        context.read<ProductsBloc>().add(const ProductsSearchUpdated(''));
+                        context
+                            .read<ProductsBloc>()
+                            .add(const ProductsSearchUpdated(''));
                         isSearchEmpty.value = true;
                       },
                       icon: const Icon(Icons.clear_rounded),
@@ -113,7 +118,8 @@ class ProductSearchField extends HookWidget {
               ],
             );
           },
-          suggestionsBuilder: (BuildContext context, SearchController controller) {
+          suggestionsBuilder:
+              (BuildContext context, SearchController controller) {
             return List<ListTile>.generate(5, (int index) {
               final String item = 'item $index';
               return ListTile(

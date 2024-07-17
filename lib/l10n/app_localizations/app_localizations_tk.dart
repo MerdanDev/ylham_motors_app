@@ -29,6 +29,9 @@ class AppLocalizationsTk extends AppLocalizations {
   String get profileEdit => 'Profili sazlamak';
 
   @override
+  String get phoneNumber => 'Telefon nomeri';
+
+  @override
   String get firstname => 'Ady';
 
   @override
@@ -192,4 +195,28 @@ class AppLocalizationsTk extends AppLocalizations {
 
   @override
   String get productsEmptyDescription => 'Häzirki wagtda harytlar ýok.';
+
+  @override
+  String get home => 'Baş sahypa';
+
+  @override
+  String get category => 'Kategoriýa';
+
+  @override
+  String get favorites => 'Halanlarym';
+
+  @override
+  String get authenticationPage => 'Agza bolmak sahypasy';
+
+  @override
+  String get login => 'Agza bolmak';
+
+  @override
+  String get register => 'Hasap döretmek';
+
+  @override
+  String get submit => 'Tassykla';
+
+  @override
+  String get continueT => 'Dowam et';
 }

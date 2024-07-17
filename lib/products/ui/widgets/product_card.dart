@@ -37,7 +37,8 @@ class ProductCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 8.0),
-                Text(product.name ?? '', style: const AppTextStyle.text().sm().semiBold()),
+                Text(product.name ?? '',
+                    style: const AppTextStyle.text().sm().semiBold()),
                 const SizedBox(height: 8.0),
                 Expanded(
                   child: Text(
@@ -48,21 +49,24 @@ class ProductCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8.0),
-                Row(
-                  children: [
-                    Text(product.price ?? '', style: const AppTextStyle.text().md().bold()),
-                    if (product.discountedPrice != null) ...[
-                      const SizedBox(width: AppSpacing.sm),
-                      Text(
-                        product.discountedPrice?.toString() ?? '',
-                        style: const AppTextStyle.text()
-                            .sm()
-                            .bold()
-                            .withColor(Colors.grey.shade600)
-                            .copyWith(decoration: TextDecoration.lineThrough),
-                      ),
+                FittedBox(
+                  child: Row(
+                    children: [
+                      Text(product.price ?? '',
+                          style: const AppTextStyle.text().md().bold()),
+                      if (product.discountedPrice != null) ...[
+                        const SizedBox(width: AppSpacing.sm),
+                        Text(
+                          product.discountedPrice?.toString() ?? '',
+                          style: const AppTextStyle.text()
+                              .sm()
+                              .bold()
+                              .withColor(Colors.grey.shade600)
+                              .copyWith(decoration: TextDecoration.lineThrough),
+                        ),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -71,8 +75,11 @@ class ProductCard extends StatelessWidget {
           const SizedBox(height: AppSpacing.sm),
           ProductActionButtons(
             productId: product.id!,
-            quantity: context.select((CartBloc bloc) => bloc.getProductQuantity(product.id)),
-            onFavoritePressed: () => context.read<FavoritesBloc>().add(FavoriteButtonPressed(product)),
+            quantity: context
+                .select((CartBloc bloc) => bloc.getProductQuantity(product.id)),
+            onFavoritePressed: () => context
+                .read<FavoritesBloc>()
+                .add(FavoriteButtonPressed(product)),
             onQuantityUpdated: (quantity) {
               context.read<CartBloc>().add(
                     CartUpdateRequested(

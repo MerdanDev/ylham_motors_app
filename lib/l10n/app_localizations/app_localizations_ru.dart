@@ -29,6 +29,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get profileEdit => 'Редактировать профиль';
 
   @override
+  String get phoneNumber => 'Номер телефона';
+
+  @override
   String get firstname => 'Имя';
 
   @override
@@ -80,10 +83,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get ordersEmptyDescription => 'Здесь отображаются ваши заказы';
 
   @override
-  String get favoritesEmptyTitle => 'Halanlarym ýok';
+  String get favoritesEmptyTitle => 'Избранное пусто';
 
   @override
-  String get favoritesEmptyDescription => 'Halanlaryňyzyň sanawy şu ýerde görkeziler';
+  String get favoritesEmptyDescription => 'Здесь будут показаны избранные';
 
   @override
   String get productSize => 'Размер';
@@ -192,4 +195,28 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get productsEmptyDescription => 'В настоящее время товары отсутствуют.';
+
+  @override
+  String get home => 'Главная';
+
+  @override
+  String get category => 'Категория';
+
+  @override
+  String get favorites => 'Избранное';
+
+  @override
+  String get authenticationPage => 'Страница аутентификации';
+
+  @override
+  String get login => 'Войти';
+
+  @override
+  String get register => 'Зарегистрироваться';
+
+  @override
+  String get submit => 'Отправить';
+
+  @override
+  String get continueT => 'Продолжать';
 }
